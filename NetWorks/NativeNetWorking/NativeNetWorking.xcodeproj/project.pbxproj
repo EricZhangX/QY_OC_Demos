@@ -13,6 +13,7 @@
 		9957935A1E8222FB00CAFC62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 995793581E8222FB00CAFC62 /* Main.storyboard */; };
 		9957935C1E8222FB00CAFC62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9957935B1E8222FB00CAFC62 /* Assets.xcassets */; };
 		9957935F1E8222FB00CAFC62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9957935D1E8222FB00CAFC62 /* LaunchScreen.storyboard */; };
+		995793691E8223E500CAFC62 /* QYNativeNetWorking.m in Sources */ = {isa = PBXBuildFile; fileRef = 995793681E8223E500CAFC62 /* QYNativeNetWorking.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		9957935B1E8222FB00CAFC62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9957935E1E8222FB00CAFC62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		995793601E8222FB00CAFC62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		995793671E8223E500CAFC62 /* QYNativeNetWorking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNativeNetWorking.h; sourceTree = "<group>"; };
+		995793681E8223E500CAFC62 /* QYNativeNetWorking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNativeNetWorking.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		9957934E1E8222FB00CAFC62 /* NativeNetWorking */ = {
 			isa = PBXGroup;
 			children = (
+				995793661E8223AB00CAFC62 /* QYNativeNetWorking */,
 				995793521E8222FB00CAFC62 /* AppDelegate.h */,
 				995793531E8222FB00CAFC62 /* AppDelegate.m */,
 				995793551E8222FB00CAFC62 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				995793501E8222FB00CAFC62 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		995793661E8223AB00CAFC62 /* QYNativeNetWorking */ = {
+			isa = PBXGroup;
+			children = (
+				995793671E8223E500CAFC62 /* QYNativeNetWorking.h */,
+				995793681E8223E500CAFC62 /* QYNativeNetWorking.m */,
+			);
+			path = QYNativeNetWorking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995793691E8223E500CAFC62 /* QYNativeNetWorking.m in Sources */,
 				995793571E8222FB00CAFC62 /* ViewController.m in Sources */,
 				995793541E8222FB00CAFC62 /* AppDelegate.m in Sources */,
 				995793511E8222FB00CAFC62 /* main.m in Sources */,
