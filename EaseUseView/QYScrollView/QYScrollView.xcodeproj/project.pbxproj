@@ -14,6 +14,7 @@
 		9960329B1E76435B00D0D1FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9960329A1E76435B00D0D1FB /* Assets.xcassets */; };
 		9960329E1E76435B00D0D1FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9960329C1E76435B00D0D1FB /* LaunchScreen.storyboard */; };
 		996032AE1E7668B700D0D1FB /* QYRefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = 996032AD1E7668B700D0D1FB /* QYRefreshView.m */; };
+		996032B01E7688AA00D0D1FB /* QYRefreshView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 996032AF1E7688AA00D0D1FB /* QYRefreshView.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9960329F1E76435B00D0D1FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		996032AC1E7668B700D0D1FB /* QYRefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYRefreshView.h; sourceTree = "<group>"; };
 		996032AD1E7668B700D0D1FB /* QYRefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYRefreshView.m; sourceTree = "<group>"; };
+		996032AF1E7688AA00D0D1FB /* QYRefreshView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = QYRefreshView.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		996032AB1E7648E000D0D1FB /* QYScrollViewRefresh */ = {
 			isa = PBXGroup;
 			children = (
+				996032AF1E7688AA00D0D1FB /* QYRefreshView.bundle */,
 				996032AC1E7668B700D0D1FB /* QYRefreshView.h */,
 				996032AD1E7668B700D0D1FB /* QYRefreshView.m */,
 			);
@@ -151,6 +154,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				996032B01E7688AA00D0D1FB /* QYRefreshView.bundle in Resources */,
 				9960329E1E76435B00D0D1FB /* LaunchScreen.storyboard in Resources */,
 				9960329B1E76435B00D0D1FB /* Assets.xcassets in Resources */,
 				996032991E76435B00D0D1FB /* Main.storyboard in Resources */,
@@ -324,6 +328,7 @@
 				996032A41E76435B00D0D1FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
