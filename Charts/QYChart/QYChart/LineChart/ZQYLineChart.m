@@ -1,0 +1,503 @@
+//
+//  ZQYLineChart.m
+//  ZQYChartDemos
+//
+//  Created by zhangqingyu on 16/1/20.
+//  Copyright © 2016年 张庆玉. All rights reserved.
+//
+
+#import "ZQYLineChart.h"
+
+
+
+@interface ZQYLineChart()
+{
+    CGSize _size;
+    CGFloat YaxisSpace;
+    NSArray *dataSourceArr;
+    NSMutableArray *buttonsArr;
+    NSMutableArray *titleLabelArr;
+}
+@property (nonatomic, strong) NSMutableArray *pointXvalues;
+@property (nonatomic, strong) NSMutableArray *pointYvalues;
+
+@end
+
+
+@implementation ZQYLineChart
+
+NSString * const ZQY_isDashDotLine           = @"isDashDotLine";
+NSString * const ZQY_ymarkPosition           = @"ymarkPosition";
+NSString * const ZQY_YaxisCount              = @"YaxisCount";
+NSString * const ZQY_LeftYaxisRange          = @"LeftYaxisRange";
+NSString * const ZQY_LeftYaxisType           = @"LeftYaxisType";
+NSString * const ZQY_RightYaxisRange         = @"RightYaxisRange";
+NSString * const ZQY_RightYaxisType          = @"RightYaxisType";
+NSString * const ZQY_XaxisTitlesArr          = @"XaxisTitlesArr";
+
+NSString * const ZQY_YaxisTitleColor         = @"YaxisTitleColor";
+NSString * const ZQY_XaxisTitleColor         = @"XaxisTitleColor";
+NSString * const ZQY_XaxisSelectedTitleColor = @"XaxisSelectedTitleColor";
+NSString * const ZQY_chartBaseLineColor      = @"chartBaseLineColor";
+NSString * const ZQY_chartLineColorsArr      = @"chartLineColorsArr";
+
+NSString * const ZQY_YaxisTitleWidth         = @"YaxisTitleWidth";
+NSString * const ZQY_XaxisTitleHeight        = @"XaxisTitleHeight";
+NSString * const ZQY_chartBaseLineWidth      = @"chartBaseLineWidth";
+NSString * const ZQY_chartLineWidth          = @"chartLineWidth";
+
+NSString * const ZQY_isEnableButton          = @"isEnableButton";
+
+
+/**
+ * 初始化方法
+ */
+- (instancetype)initWithChartDatas:(NSArray *)chartDatas frame:(CGRect)frame options:(NSDictionary *)options {
+    self = [super initWithFrame:frame];
+    if (!self) {
+        return nil;
+    }
+    self.backgroundColor = [UIColor clearColor];
+    buttonsArr = [NSMutableArray new];
+    titleLabelArr = [NSMutableArray new];
+    _chartDatas = chartDatas;
+    [self initValues];
+    if (options) {
+        for (NSString *key in options) {
+            if ([key isEqualToString:@"ymarkPosition"]) {
+                _ymarkPosition = [options[key] intValue];
+            } else if ([key isEqualToString:@"YaxisCount"]) {
+                _YaxisCount = [options[key] integerValue];
+            } else if ([key isEqualToString:@"LeftYaxisRange"]) {
+                _LeftYaxisRange = NSRangeFromString((NSString *)options[key]);
+            } else if ([key isEqualToString:@"LeftYaxisType"]) {
+                _LeftYaxisType = [options[key] intValue];
+            } else if ([key isEqualToString:@"RightYaxisRange"]) {
+                _RightYaxisRange = NSRangeFromString((NSString *)options[key]);
+            } else if ([key isEqualToString:@"RightYaxisType"]) {
+                _RightYaxisType = [options[key] intValue];
+            } else if ([key isEqualToString:@"XaxisTitlesArr"]) {
+                _XaxisTitlesArr = options[key];
+            } else if ([key isEqualToString:@"YaxisTitleColor"]) {
+                _YaxisTitleColor = options[key];
+            } else if ([key isEqualToString:@"XaxisTitleColor"]) {
+                _XaxisTitleColor = options[key];
+            } else if ([key isEqualToString:@"XaxisSelectedTitleColor"]) {
+                _XaxisSelectedTitleColor = options[key];
+            } else if ([key isEqualToString:@"chartBaseLineColor"]) {
+                _chartBaseLineColor = options[key];
+            } else if ([key isEqualToString:@"chartLineColorsArr"]) {
+                _chartLineColorsArr = options[key];
+            } else if ([key isEqualToString:@"isDashDotLine"]) {
+                _isDashDotLine = [options[key] boolValue];
+            } else if ([key isEqualToString:@"YaxisTitleWidth"]) {
+                _YaxisTitleWidth = [options[key] floatValue];
+            } else if ([key isEqualToString:@"XaxisTitleHeight"]) {
+                _XaxisTitleHeight = [options[key] floatValue];
+            } else if ([key isEqualToString:@"chartBaseLineWidth"]) {
+                _chartBaseLineWidth = [options[key] floatValue];
+            } else if ([key isEqualToString:@"chartLineWidth"]) {
+                _chartLineWidth = [options[key] floatValue];
+            } else if ([key isEqualToString:@"isEnableButton"]) {
+                _isEnableButton = [options[key] boolValue];
+            }
+        }
+    }
+    if (_ymarkPosition == Both) {
+        _size.width = frame.size.width - _YaxisTitleWidth*2;
+    } else {
+        _size.width = frame.size.width - _YaxisTitleWidth;
+    }
+    _size.height = frame.size.height - _XaxisTitleHeight;
+    YaxisSpace = (float)_size.height/_YaxisCount;
+    return self;
+}
+
+- (void)initValues {
+    _isDashDotLine              = YES;
+    _ymarkPosition              = Left;
+    _YaxisCount                 = 5;
+    _LeftYaxisRange             = NSMakeRange(0, 100);
+    _LeftYaxisType              = Number;
+    _RightYaxisRange            = NSMakeRange(0, 100);
+    _RightYaxisType             = Number;
+    _XaxisTitlesArr             = @[@"X0",@"X1",@"X2",@"X3",@"X4"];
+    _YaxisTitleColor            = [UIColor greenColor];
+    _XaxisTitleColor            = [UIColor greenColor];
+    _XaxisSelectedTitleColor    = [UIColor redColor];
+    _chartBaseLineColor         = [UIColor grayColor];
+    _chartLineColorsArr         = @[[UIColor redColor],[UIColor greenColor]];
+    _YaxisTitleWidth            = 40.0f;
+    _XaxisTitleHeight           = 20.0f;
+    _chartBaseLineWidth         = 1.0f;
+    _chartLineWidth             = 1.0f;
+}
+
+#pragma mark OutFuncations
+//选择X轴某一个item
+- (void)selectItem:(NSInteger)index {
+    for (UIButton *button in buttonsArr) {
+        if (button.tag == index || button.tag == index+TagNum) {
+            button.selected = YES;
+            [self checkButtonSelected:button];
+        } else {
+            button.selected = NO;
+            [self checkButtonSelected:button];
+        }
+    }
+}
+
+// 根据数据源重新加载
+- (void)reloadWithDatas:(NSArray *)datasArr andSeleteItem:(NSInteger)index {
+    self.chartDatas = datasArr;
+    self.seletedIndex = index;
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect {
+    [super drawRect:rect];
+    
+    if (self.isDashDotLine) {
+        [self drawDashLine];
+    } else {
+        [self drawBaseLine];
+    }
+    
+    NSRange range;
+
+    //绘制折线
+    if (self.ymarkPosition == Left) {
+        range = self.LeftYaxisRange;
+        [self drawBarWithDatas:self.chartDatas andRange:range andColorArr:self.chartLineColorsArr andPosition:Left];
+        //[self drawLinesWithDatas:self.chartDatas andRange:range andColorArr:self.chartLineColorsArr andPosition:Left];
+//        [self addYaxisTitlesWithPoistion:Left];//不显示Y轴
+    } else if (self.ymarkPosition == Right) {
+        range = self.RightYaxisRange;
+        [self drawLinesWithDatas:self.chartDatas andRange:range andColorArr:self.chartLineColorsArr andPosition:Right];
+        [self addYaxisTitlesWithPoistion:Right];
+    } else if (self.ymarkPosition == Both) {
+        for (NSInteger i=0; i<self.chartDatas.count; i++) {
+            NSArray *arr = @[self.chartDatas[i]];
+            NSArray *colorArr = @[self.chartLineColorsArr[i]];
+            if (i==0) {
+                range = self.LeftYaxisRange;
+                [self addYaxisTitlesWithPoistion:Left];
+            } else {
+                range = self.RightYaxisRange;
+                [self addYaxisTitlesWithPoistion:Right];
+            }
+            [self drawLinesWithDatas:arr andRange:range andColorArr:colorArr andPosition:Both];
+        }
+    }
+}
+
+//添加Y轴标识
+- (void)addYaxisTitlesWithPoistion:(YmarkPosition)position {
+    for (NSInteger i=0; i<self.YaxisCount; i++) {
+        UILabel *label = [[UILabel alloc]init];
+        CGFloat Xpoint;
+        CGFloat YcurrentNum;
+        NSInteger location;
+        NSString *titleStr = nil;
+        
+        if (position == Left) {
+            Xpoint = 0;
+            location = self.LeftYaxisRange.location;
+            YcurrentNum = (float)self.LeftYaxisRange.length/self.YaxisCount;
+            label.textAlignment = NSTextAlignmentLeft;
+        } else if (position == Right) {
+            Xpoint = self.bounds.size.width-self.YaxisTitleWidth;
+            location = self.RightYaxisRange.location;
+            YcurrentNum = (float)self.RightYaxisRange.length/self.YaxisCount;
+            label.textAlignment = NSTextAlignmentRight;
+        }
+        label.frame = CGRectMake(Xpoint, _size.height-YaxisSpace*(i+0.8), self.YaxisTitleWidth, YaxisSpace);
+        label.font = [UIFont systemFontOfSize:12];
+        label.textColor = self.YaxisTitleColor;
+        NSInteger title = (NSInteger)(location+YcurrentNum*i);
+        
+        if (position == Left && self.LeftYaxisType == Time) {
+            titleStr = [self changeSecondsToMinesStye:title];
+        } else if (position == Right && self.RightYaxisType == Time) {
+            titleStr = [self changeSecondsToMinesStye:title];
+        } else {
+            titleStr = [NSString stringWithFormat:@"%ld",(long)title];
+        }
+        label.text = titleStr;
+        label.backgroundColor = [UIColor clearColor];
+        [self addSubview:label];
+    }
+}
+
+//将秒数转换为 mm:ss 的形式
+- (NSString *)changeSecondsToMinesStye:(NSInteger) seconds {
+    NSString *minestr = nil;
+    NSString *secstr = nil;
+    
+    int mines = (int)seconds/60;
+    if (mines<10) {
+        minestr = [NSString stringWithFormat:@"0%d",mines];
+    } else {
+        minestr = [NSString stringWithFormat:@"%d",mines];
+    }
+    int sec = seconds%60;
+    if (sec<10) {
+        secstr = [NSString stringWithFormat:@"0%d",sec];
+    } else {
+        secstr = [NSString stringWithFormat:@"%d",sec];
+    }
+    return [NSString stringWithFormat:@"%@:%@",minestr,secstr];
+}
+
+//绘制柱状图
+- (void)drawBarWithDatas:(NSArray *)datas andRange:(NSRange)range andColorArr:(NSArray *)colorArr andPosition:(YmarkPosition) position {
+    //每组数据占得宽度 = 90
+    //相邻数组中的数据间隔 = 25
+    for (NSInteger i=0;i<datas.count;i++) {
+        NSArray *arr = datas[i];
+        
+        for (NSInteger j=0; j<arr.count; j++) {
+            UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+            CGFloat num = [arr[j] floatValue];
+            CGPoint startPoint;
+            startPoint = CGPointMake(90*i+25*(j+1) + self.YaxisTitleWidth, _size.height*(1-(float)(num-range.location)/range.length));
+            [bezierPath moveToPoint:startPoint];
+            CGPoint endPoint;
+            endPoint = CGPointMake(90*i+25*(j+1) + self.YaxisTitleWidth, _size.height);
+            [bezierPath addLineToPoint:endPoint];
+            bezierPath.lineWidth = 25;
+            UIColor *color = colorArr[j];
+            [color setStroke];
+            [bezierPath stroke];
+            //柱状图上的数字label
+            UILabel *titile = [[UILabel alloc] initWithFrame:CGRectMake(startPoint.x - 12, startPoint.y - 15, 25, 15)];
+            titile.text = arr[j];
+            titile.font = [UIFont systemFontOfSize:10];
+            titile.textAlignment = NSTextAlignmentCenter;
+            titile.textColor = colorArr[j];
+            titile.tag = i*2+j+1;
+            [titleLabelArr addObject:titile];
+            [self addSubview:titile];
+        }
+        
+        for (NSInteger i=0; i<datas.count; i++) {
+            CGPoint point;
+            if (position == Right) {
+                point = CGPointMake(90*i, 0);
+            } else {
+                point = CGPointMake(90*(i+0.5) + self.YaxisTitleWidth, 0);
+            }
+            [self addXaxisTitlesWithPoint:point andXaxisSpace:90 andIndex:i andColor:nil];
+        }
+    }
+}
+
+// 绘制折线图
+- (void)drawLinesWithDatas:(NSArray *)datas andRange:(NSRange)range andColorArr:(NSArray *)colorArr andPosition:(YmarkPosition) position {
+    for (NSInteger i=0;i<datas.count;i++) {
+        NSArray *arr = datas[i];
+        UIColor *color = colorArr[i];
+        CGFloat XaxisSpace = (float)(_size.width-10)/(arr.count-1);
+        
+        NSInteger tagetIndex = 0;
+        while (tagetIndex<arr.count) {
+            CGFloat num = [arr[tagetIndex] floatValue];
+            if (num!=0) {
+                break;
+            }
+            tagetIndex++;
+        }
+        NSInteger lastIndex = arr.count-1;
+        while (lastIndex>0) {
+            CGFloat num = [arr[lastIndex] floatValue];
+            if (num!=0) {
+                break;
+            }
+            lastIndex--;
+        }
+        UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+        for (NSInteger i=tagetIndex; i<arr.count; i++) {
+            CGFloat num = [arr[i] floatValue];
+            CGPoint point;
+            if (position == Right) {
+                point = CGPointMake(XaxisSpace*i, _size.height*(1-(float)(num-range.location)/range.length));
+            } else {
+                point = CGPointMake(XaxisSpace*i + self.YaxisTitleWidth, _size.height*(1-(float)(num-range.location)/range.length));
+            }
+            if (i == tagetIndex) {
+                [bezierPath moveToPoint:point];
+            } else if (num == 0) {
+            }else {
+                [bezierPath addLineToPoint:point];
+            }
+            bezierPath.lineWidth = self.chartLineWidth;
+            [color setStroke];
+            [bezierPath stroke];
+            
+            BOOL islast = false;
+            if (i == lastIndex) {
+                islast = YES;
+            }
+            if (num != 0) {
+                [self addLineButtonWithPoint:point andXaxisSpace:XaxisSpace andIndex:i andColor:color];
+            }
+            
+            for (NSInteger i=0; i<arr.count; i++) {
+                CGPoint point;
+                if (position == Right) {
+                    point = CGPointMake(XaxisSpace*i, 0);
+                } else {
+                    point = CGPointMake(XaxisSpace*i + self.YaxisTitleWidth, 0);
+                }
+                [self addXaxisTitlesWithPoint:point andXaxisSpace:XaxisSpace andIndex:i andColor:color];
+            }
+        }
+    }
+}
+
+// 添加X轴标识/曲线点标识
+- (void)addXaxisTitlesWithPoint:(CGPoint)point andXaxisSpace:(CGFloat)xaxisSpace andIndex:(NSInteger)index andColor:(UIColor *)color {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    button.frame = CGRectMake(point.x-xaxisSpace*0.5-3, _size.height, xaxisSpace-8, self.XaxisTitleHeight);
+    button.tag = index;
+    [button setEnabled:self.isEnableButton];
+    [button setTitle:self.XaxisTitlesArr[index] forState:UIControlStateNormal];
+    [button setTitleColor:self.XaxisTitleColor forState:UIControlStateNormal];
+    [button setTitleColor:self.XaxisSelectedTitleColor forState:UIControlStateSelected];
+    [button setTintColor:[UIColor clearColor]];
+    button.titleLabel.font = [UIFont systemFontOfSize:10];
+    [button addTarget:self action:@selector(buttonclicked:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonsArr addObject:button];
+    [self addSubview:button];
+    if (button.tag == self.seletedIndex) {
+        button.selected = YES;
+    }
+}
+
+- (void)addLineButtonWithPoint:(CGPoint)point andXaxisSpace:(CGFloat)xaxisSpace andIndex:(NSInteger)index andColor:(UIColor *)color  {
+    UIButton *LineButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    LineButton.tag = index+TagNum;
+    [LineButton setEnabled:self.isEnableButton];
+    if (LineButton.tag == self.seletedIndex+TagNum) {
+        LineButton.selected = YES;
+        LineButton.bounds = CGRectMake(0, 0, 12, 12);
+        [LineButton setBackgroundColor:[UIColor redColor]];
+    } else {
+        LineButton.bounds = CGRectMake(0, 0, 8, 8);
+        [LineButton setBackgroundColor:[UIColor blackColor]];
+    }
+     LineButton.center = point;
+    //ViewBorderRadius(LineButton, LineButton.bounds.size.width*0.5, 2, color);
+    [LineButton setTintColor:[UIColor clearColor]];
+    [LineButton addTarget:self action:@selector(lineButtonclicked:) forControlEvents:UIControlEventTouchUpInside];
+    [buttonsArr addObject:LineButton];
+    [self addSubview:LineButton];
+    
+}
+
+
+// X轴元素被点击时
+- (void)buttonclicked:(UIButton *)sender {
+    //NSLog(@"------>%ld",(long)sender.tag);
+    for (UIButton *button in buttonsArr) {
+        if (button.tag == sender.tag || button.tag == sender.tag+TagNum) {
+            button.selected = YES;
+        } else {
+            button.selected = NO;
+        }
+        [self checkButtonSelected:button];
+    }
+//    for (UILabel *label in titleLabelArr) {
+//        if (label.tag == sender.tag || label.tag == sender.tag+TagNum) {
+//            label.textColor = [UIColor redColor];
+//        } else {
+//            label.textColor = self.chartLineColorsArr[sender.tag%2];
+//        }
+//    }
+    if ([self.delegate respondsToSelector:@selector(XaxisItemSeleted:)]) {
+        [self.delegate XaxisItemSeleted:sender.tag];
+    }
+}
+
+// 图表上某点被点击时
+- (void)lineButtonclicked:(UIButton *)sender {
+    NSLog(@"------>%ld",(long)sender.tag);
+    for (UIButton *button in buttonsArr) {
+        if (button.tag == sender.tag || button.tag == sender.tag-TagNum) {
+            button.selected = YES;
+        } else {
+            button.selected = NO;
+        }
+        [self checkButtonSelected:button];
+    }
+    if ([self.delegate respondsToSelector:@selector(XaxisItemSeleted:)]) {
+        [self.delegate XaxisItemSeleted:sender.tag-TagNum];
+    }
+}
+
+
+// 根据button的不同状态改变显示
+- (void)checkButtonSelected:(UIButton *) sender {
+    if (sender.tag >= TagNum) {
+        if (sender.selected) {
+            sender.bounds = CGRectMake(0, 0, 12, 12);
+            [sender setBackgroundColor:[UIColor redColor]];
+        } else {
+            sender.bounds = CGRectMake(0, 0, 8, 8);
+            [sender setBackgroundColor:[UIColor blackColor]];
+        }
+//        ViewBorderRadiusWithoutColor(sender, sender.bounds.size.width*0.5, 2);
+    }
+}
+
+// 绘制网格
+- (void)drawBaseLine {
+    //绘制实线网格
+}
+
+- (void)drawDashLine {
+    //绘制虚线网格
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    // 设置上下文环境 属性
+    CGFloat dashLineWidth = self.chartBaseLineWidth;
+    [self.chartBaseLineColor setStroke];
+    CGContextSetLineWidth(ctx, dashLineWidth);
+    CGContextSetLineCap(ctx, kCGLineCapRound);
+    CGContextSetAlpha(ctx, 0.7);
+    CGFloat alilengths[2] = {5, 3};
+    CGContextSetLineDash(ctx, 0, alilengths, 2);
+    // 画横虚线
+    for (NSInteger i=0; i<=self.YaxisCount; i++) {
+        CGPoint startPoint = CGPointMake(0, _size.height-YaxisSpace*i);
+        CGPoint endPoint = CGPointMake(self.bounds.size.width, _size.height-YaxisSpace*i);
+        CGMutablePathRef path = CGPathCreateMutable();
+        CGPathMoveToPoint(path, nil, startPoint.x, startPoint.y );
+        CGPathAddLineToPoint(path, nil, endPoint.x, endPoint.y );
+        CGContextAddPath(ctx, path);
+        CGContextDrawPath(ctx, kCGPathEOFillStroke);
+        CGPathRelease(path);
+    }
+    CGFloat alilengths2[2] = {5, 0};
+    CGContextSetLineDash(ctx, 0, alilengths2, 2);
+}
+
+#pragma mark 懒加载
+- (NSMutableArray *)pointXvalues {
+    if (!_pointXvalues) {
+        _pointXvalues = [NSMutableArray new];
+    }
+    return _pointXvalues;
+}
+
+- (NSMutableArray *)pointYvalues {
+    if (!_pointYvalues) {
+        _pointYvalues = [NSMutableArray new];
+    }
+    return _pointYvalues;
+}
+
+
+
+
+
+@end

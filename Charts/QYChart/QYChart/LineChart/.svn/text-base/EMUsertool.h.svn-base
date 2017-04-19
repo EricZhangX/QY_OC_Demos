@@ -1,0 +1,29 @@
+//
+//  EMUsertool.h
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/11/27.
+//  Copyright © 2015年 zijing. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface EMUsertool : NSObject
+
+/**
+ *  保存用户信息
+ *
+ *  @param dict 用户信息
+ *  @param key  环信的chater
+ */
++ (void)setUserDict:(NSDictionary *)dict key :(NSString *)key;
+/**
+ *  获取用户信息
+ 
+ *  @param key  环信的chater
+ *  @return dict 用户信息
+ */
++ (NSDictionary *)getUserDictWithKey:(NSString *)key;
+
+
+@end

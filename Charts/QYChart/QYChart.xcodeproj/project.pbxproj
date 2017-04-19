@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9930F81A1EA6EC5100158DF2 /* ZQYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */; };
+		9930F81F1EA72BD100158DF2 /* QYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F81E1EA72BD100158DF2 /* QYBarChart.m */; };
+		9930F8221EA72BE100158DF2 /* QYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8211EA72BE100158DF2 /* QYLineChart.m */; };
+		9930F8251EA72C0600158DF2 /* QYBarChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8241EA72C0600158DF2 /* QYBarChartData.m */; };
+		9930F8281EA72F3B00158DF2 /* QYCoordinateChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8271EA72F3B00158DF2 /* QYCoordinateChart.m */; };
 		999182501EA07C01006CEF43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9991824F1EA07C01006CEF43 /* main.m */; };
 		999182531EA07C01006CEF43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 999182521EA07C01006CEF43 /* AppDelegate.m */; };
 		999182561EA07C01006CEF43 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999182551EA07C01006CEF43 /* ViewController.m */; };
@@ -16,6 +21,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9930F8181EA6EC5100158DF2 /* ZQYLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQYLineChart.h; sourceTree = "<group>"; };
+		9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQYLineChart.m; sourceTree = "<group>"; };
+		9930F81D1EA72BD100158DF2 /* QYBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYBarChart.h; sourceTree = "<group>"; };
+		9930F81E1EA72BD100158DF2 /* QYBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYBarChart.m; sourceTree = "<group>"; };
+		9930F8201EA72BE100158DF2 /* QYLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYLineChart.h; sourceTree = "<group>"; };
+		9930F8211EA72BE100158DF2 /* QYLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYLineChart.m; sourceTree = "<group>"; };
+		9930F8231EA72C0600158DF2 /* QYBarChartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYBarChartData.h; sourceTree = "<group>"; };
+		9930F8241EA72C0600158DF2 /* QYBarChartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYBarChartData.m; sourceTree = "<group>"; };
+		9930F8261EA72F3B00158DF2 /* QYCoordinateChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCoordinateChart.h; sourceTree = "<group>"; };
+		9930F8271EA72F3B00158DF2 /* QYCoordinateChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYCoordinateChart.m; sourceTree = "<group>"; };
 		9991824B1EA07C01006CEF43 /* QYChart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYChart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9991824F1EA07C01006CEF43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		999182511EA07C01006CEF43 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -39,6 +54,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9930F8171EA6EC5100158DF2 /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				9930F8181EA6EC5100158DF2 /* ZQYLineChart.h */,
+				9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */,
+				9930F81D1EA72BD100158DF2 /* QYBarChart.h */,
+				9930F81E1EA72BD100158DF2 /* QYBarChart.m */,
+				9930F8201EA72BE100158DF2 /* QYLineChart.h */,
+				9930F8211EA72BE100158DF2 /* QYLineChart.m */,
+				9930F8231EA72C0600158DF2 /* QYBarChartData.h */,
+				9930F8241EA72C0600158DF2 /* QYBarChartData.m */,
+				9930F8261EA72F3B00158DF2 /* QYCoordinateChart.h */,
+				9930F8271EA72F3B00158DF2 /* QYCoordinateChart.m */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
 		999182421EA07C01006CEF43 = {
 			isa = PBXGroup;
 			children = (
@@ -58,6 +90,7 @@
 		9991824D1EA07C01006CEF43 /* QYChart */ = {
 			isa = PBXGroup;
 			children = (
+				9930F8171EA6EC5100158DF2 /* LineChart */,
 				999182511EA07C01006CEF43 /* AppDelegate.h */,
 				999182521EA07C01006CEF43 /* AppDelegate.m */,
 				999182541EA07C01006CEF43 /* ViewController.h */,
@@ -153,7 +186,12 @@
 			files = (
 				999182561EA07C01006CEF43 /* ViewController.m in Sources */,
 				999182531EA07C01006CEF43 /* AppDelegate.m in Sources */,
+				9930F8281EA72F3B00158DF2 /* QYCoordinateChart.m in Sources */,
 				999182501EA07C01006CEF43 /* main.m in Sources */,
+				9930F81A1EA6EC5100158DF2 /* ZQYLineChart.m in Sources */,
+				9930F8221EA72BE100158DF2 /* QYLineChart.m in Sources */,
+				9930F81F1EA72BD100158DF2 /* QYBarChart.m in Sources */,
+				9930F8251EA72C0600158DF2 /* QYBarChartData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +350,7 @@
 				999182641EA07C01006CEF43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

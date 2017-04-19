@@ -1,0 +1,38 @@
+//
+//  RegexUtils.h
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/12/8.
+//  Copyright © 2015年 zijing. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface RegexUtils : NSObject
+/**
+ *  是否是电话号码
+ *
+ *  @param strNum 电话号码
+ *
+ *  @return 匹配结果
+ */
++ (BOOL) isMobile:(NSString *)strNum;
+
+/**
+ *  是否是数字或是小数点
+ *
+ *  @param string 数字
+ *
+ *  @return 匹配结果  yes 符合  no 不符合
+ */
++ (BOOL) isNumberOrPoint:(NSString *)string;
+
+/**
+ *  验证身份证是否正确
+ *
+ *  @param value 身份证号码
+ *
+ *  @return  yes 有效   no 无效
+ */
++(BOOL)validateIDCardNumber:(NSString *)value ;
+@end

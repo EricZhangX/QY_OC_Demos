@@ -1,0 +1,523 @@
+//
+//  Tools.m
+//  Start_Project
+//
+//  Created by zhangqingyu on 15/10/7.
+//  Copyright © 2015年 张庆玉. All rights reserved.
+//
+
+#import "Tools.h"
+
+@implementation Tools
+
+{
+    UIViewController *_controller;
+}
+
+/**
+ *  图片等比缩放
+ */
++ (UIImage *)scaleImageWithImage:(UIImage *)theOriginalImage withScaleRate:(CGFloat)theRate {
+    CGSize tNewSize = CGSizeMake(theOriginalImage.size.width * theRate, theOriginalImage.size.height * theRate);
+    
+    UIGraphicsBeginImageContext(tNewSize);
+    [theOriginalImage drawInRect:CGRectMake(0, 0, tNewSize.width, tNewSize.height)];
+    UIImage *tScaleImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tScaleImage;
+}
+
+/**
+ *  图片自定义大小缩放
+ */
++ (UIImage *)scaleImageWithImage:(UIImage *)theOriginalImage withToSize:(CGSize)theSize {
+    UIGraphicsBeginImageContext(theSize);
+    [theOriginalImage drawInRect:CGRectMake(0, 0, theSize.width, theSize.height)];
+    UIImage *tScaleImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tScaleImage;
+}
+
+/*
+ *首先获取当前日期的 前后的天数（N=负数 为前N天，N=正数 为后N天）
+ *dateFormatter 为日期格式 例：yyyy-MM-dd hh:mm:ss
+ */
++ (NSString *)getNDay:(NSInteger)n DateFormatter:(NSString *)dateFormatter{
+    NSDate *nowDate = [NSDate date];
+    NSDate *theDate;
+    if(n!=0){
+        NSTimeInterval  oneDay = 24*60*60*1;  //1天的长度
+        theDate = [nowDate initWithTimeIntervalSinceNow: oneDay*n ];//initWithTimeIntervalSinceNow是从现在往前后推的秒数
+
+    }else{
+        theDate = nowDate;
+    }
+
+    NSDateFormatter *date_formatter = [[NSDateFormatter alloc] init];
+    [date_formatter setDateFormat:dateFormatter];
+    NSString *the_date_str = [date_formatter stringFromDate:theDate];
+    
+    return the_date_str;
+}
+
+/**
+ *  根据日期转换成农历
+ *
+ *  @param theDate 需要转换的日期
+ *
+ *  @return 转换后的日期
+ */
++ (NSString *)formatDateToTraditionalDate:(NSDate *)theDate {
+    NSArray *tMonthes = @[@"正月", @"二月", @"三月", @"四月", @"五月", @"六月", @"七月", @"八月", @"九月", @"十月", @"冬月", @"腊月"];
+    
+    NSArray *tDays = @[@"初一", @"初二", @"初三", @"初四", @"初五", @"初六", @"初七", @"初八", @"初九", @"初十",
+                       @"十一", @"十二", @"十三", @"十四", @"十五", @"十六", @"十七", @"十八", @"十九", @"二十",
+                       @"廿一", @"廿二", @"廿三", @"廿四", @"廿五", @"廿六", @"廿七", @"廿八", @"廿九", @"三十"];
+    
+    NSCalendar *tCalender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierChinese];
+    
+    NSCalendarUnit tFlags = NSCalendarUnitYear | NSCalendarUnitMonth |  NSCalendarUnitDay;
+    NSDateComponents *tComp = [tCalender components:tFlags fromDate:theDate];
+    NSString *tMonthStr = tMonthes[tComp.month - 1];
+    NSString *tDayStr = tDays[tComp.day - 1];
+    NSString *tYearStr = [[theDate description]substringToIndex:4];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setCalendar:tCalender];
+    [df setDateFormat:@"MM"];
+    NSString *tDateStr = [df stringFromDate:theDate];
+    tDateStr = [NSString stringWithFormat:@"%@-%@-%@", tYearStr, tMonthStr, tDayStr];
+    
+    return tDateStr;
+}
+
+/**
+ *  根据日期转换成公历
+ *  @param theDate 需要转换的日期
+ *  @return 转换后的日期
+ */
++ (NSString *)formatDateToGregorianDate:(NSDate *)theDate {
+    NSCalendar *tCalender = [[NSCalendar alloc]initWithCalendarIdentifier:NSCalendarIdentifierChinese];
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setCalendar:tCalender];
+    [df setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *tNewStr = [df stringFromDate:theDate];
+    
+    return tNewStr;
+}
+
+/**
+ * 日期格式化
+ **/
++ (NSString *)formatDateToNSString:(NSString *)formateStyle fromDate:(NSDate *)date {
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:formateStyle];
+    return [df stringFromDate:date];
+}
+
+/**
+ *  日期格式化(string)
+ */
++ (NSString *)formatDateToNSString:(NSString *)formateStyle fromString:(NSString *)string {
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *tDate = [df dateFromString:string];
+    [df setDateFormat:formateStyle];
+    
+    return [df stringFromDate:tDate];
+}
+
+/**
+ *  一天的间隔时间
+ */
++ (NSString *)formatOtherDateWithCurrentDate:(NSDate *)theDate {
+    return [self formatOtherDateWithCurrentDate:theDate withIsPlus:NO];
+}
+
+/**
+ *  一天的间隔时间-- 加、减一天
+ */
++ (NSString *)formatOtherDateWithCurrentDate:(NSDate *)theDate withIsPlus:(BOOL)isPlus {
+    NSInteger tHours = isPlus ? 24 : -24;
+    NSDateFormatter  *dateformatter=[[NSDateFormatter alloc] init];
+    [dateformatter setDateFormat:@"yyyy-MM-dd HH:mm:00"];
+    
+    NSDate *otherDate = [NSDate dateWithTimeInterval:tHours * 3600 sinceDate:theDate];
+    NSString *otherDateStr = [dateformatter stringFromDate:otherDate];
+    
+    return otherDateStr;
+}
+
+/**
+ * 获取自定义传入thedate相隔的时间 count相隔天数(正负值)
+ 例子:
+ count为前后天数   如:2为后天 -1为昨天
+ length为截取长度  如:2016-05-17 length为10; 2016-05 length为7
+ */
++ (NSString *)formatTargetDayWithCurrentDate:(NSDate *)theDate withCount:(int)count andRange:(NSRange)range{
+    NSTimeInterval secendsPerDay = 24 * 60 * 60;
+    NSDate *targetDay = [theDate dateByAddingTimeInterval:(secendsPerDay * count) + 8 * 60 * 60];//中国时差相差8小时了
+    
+    return  [[targetDay description] substringWithRange:range];
+}
+/**
+ *  获取date的各种属性 年月日时分秒等 时间的信息
+ */
++ (NSDateComponents *)getDateComponents:(NSDate *)date{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger unitFlags =NSYearCalendarUnit | NSMonthCalendarUnit |NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit |NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *comps = [calendar components:unitFlags fromDate:date];//取一个时间 查看其属性
+    return comps;
+}
+/**
+ *  获取星期几
+ */
++ (NSString *)getWeekDay:(NSDate *)date{
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSInteger unitFlags =NSYearCalendarUnit | NSMonthCalendarUnit |NSDayCalendarUnit | NSWeekdayCalendarUnit |
+    NSHourCalendarUnit |NSMinuteCalendarUnit | NSSecondCalendarUnit;
+    NSDateComponents *comps = [calendar components:unitFlags fromDate:date];//取一个时间 查看其属性
+    
+    //    NSLog(@"-----------weekday is %ld",[comps weekday]);//在这里需要注意的是：星期日是数字1，星期一时数字2，以此类推。。。
+    //    NSLog(@"-----------month is %ld",[comps month]);//月份
+    //    NSLog(@"-----------day is %ld",[comps day]);//日期
+    //    NSLog(@"-----------weekdayOrdinal is %ld",[comps weekdayOrdinal]);//周节序
+    
+    switch ((int)[comps weekday]) {
+        case 1:
+            return @"星期天";
+            break;
+        case 2:
+            return @"星期一";
+            break;
+        case 3:
+            return @"星期二";
+            break;
+        case 4:
+            return @"星期三";
+            break;
+        case 5:
+            return @"星期四";
+            break;
+        case 6:
+            return @"星期五";
+            break;
+        case 7:
+            return @"星期六";
+            break;
+            
+        default:
+            return @"分析星期几错误";
+            break;
+    }
+}
+
+/**
+ *  正则匹配
+ */
++ (BOOL)isMathTargetStr:(NSString *)theTargetStr withPredicateStr:(NSString *)theRegexStr {
+    NSPredicate *tPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES%@", theRegexStr];
+    return [tPredicate evaluateWithObject:theTargetStr];
+}
+
+/**
+ *  正则匹配:电话匹配
+ */
++ (BOOL)isMathPhoneNumberTargetStr:(NSString *)theTargetStr {
+    //    NSString *regex = @"^((\\+86)|(86))?(13|18|15|17)\\d{9}$";
+    NSString *regex = @"^((\\+86)|(86))?(13|14|18|15|17)\\d{9}$";
+    return [self isMathTargetStr:theTargetStr withPredicateStr:regex];
+}
+
+/**
+ *  是否是数字或是小数点
+ *
+ *  @param string 数字
+ *
+ *  @return 匹配结果 匹配结果  yes 符合  no 不符合
+ */
++ (BOOL) isNumberOrPoint:(NSString *)theTargetStr {
+    NSString *regex = @"^[0-9]+([.]{0}|[.]{1}[0-9]+)$";
+    return [self isMathTargetStr:theTargetStr withPredicateStr:regex];
+}
+
+/**
+ *  验证身份证是否正确
+ *
+ *  @param value 身份证号码
+ *
+ *  @return  yes 有效   no 无效
+ */
++ (BOOL)validateIDCardNumber:(NSString *)theTargetStr {
+    theTargetStr = [theTargetStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];//去除空格
+    
+    long length = 0;
+    if (!theTargetStr) {
+        return NO;
+    }else {
+        length = theTargetStr.length;
+        if (length != 15 && length != 18) {
+            return NO;
+        }
+    }
+    // 省份代码
+    NSArray *areasArray =@[@"11",@"12", @"13",@"14", @"15",@"21", @"22",@"23", @"31",@"32", @"33",@"34", @"35",@"36", @"37",@"41", @"42",@"43", @"44",@"45", @"46",@"50", @"51",@"52", @"53",@"54", @"61",@"62", @"63",@"64", @"65",@"71", @"81",@"82", @"91"];
+    
+    NSString *valueStart2 = [theTargetStr substringToIndex:2];
+    BOOL areaFlag = NO;
+    for (NSString *areaCode in areasArray) {
+        if ([areaCode isEqualToString:valueStart2]) {
+            areaFlag = YES;
+            break;
+        }
+    }
+    
+    if (!areaFlag) {
+        return false;
+    }
+    
+    NSRegularExpression *regularExpression;
+    NSUInteger numberofMatch;
+    
+    int year =0;
+    switch (length) {
+        case 15:
+            year = [theTargetStr substringWithRange:NSMakeRange(6,2)].intValue +1900;
+            if (year %400 == 0 || (year%100 != 0 && year%4 == 0)) {
+                regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$"
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
+            }else {
+                regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$"
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
+            }
+            numberofMatch = [regularExpression numberOfMatchesInString:theTargetStr
+                                                               options:NSMatchingReportProgress
+                                                                 range:NSMakeRange(0, theTargetStr.length)];
+            
+            if(numberofMatch >0) {
+                return YES;
+            }else {
+                return NO;
+            }
+        case 18:
+            //430528 1989 02263070
+            year = [theTargetStr substringWithRange:NSMakeRange(6,4)].intValue;
+            if (year %400 == 0 || (year%100 != 0 && year%4 == 0)) {
+                
+                regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9X]$"
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
+            }else {
+                regularExpression = [[NSRegularExpression alloc]initWithPattern:@"^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}[0-9X]$"
+                                                                        options:NSRegularExpressionCaseInsensitive
+                                                                          error:nil];//测试出生日期的合法性
+            }
+            numberofMatch = [regularExpression numberOfMatchesInString:theTargetStr
+                                                               options:NSMatchingReportProgress
+                                                                 range:NSMakeRange(0, theTargetStr.length)];
+            
+            
+            if(numberofMatch >0) {
+                int S = ([theTargetStr substringWithRange:NSMakeRange(0,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(10,1)].intValue) *7 + ([theTargetStr substringWithRange:NSMakeRange(1,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(11,1)].intValue) *9 + ([theTargetStr substringWithRange:NSMakeRange(2,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(12,1)].intValue) *10 + ([theTargetStr substringWithRange:NSMakeRange(3,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(13,1)].intValue) *5 + ([theTargetStr substringWithRange:NSMakeRange(4,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(14,1)].intValue) *8 + ([theTargetStr substringWithRange:NSMakeRange(5,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(15,1)].intValue) *4 + ([theTargetStr substringWithRange:NSMakeRange(6,1)].intValue + [theTargetStr substringWithRange:NSMakeRange(16,1)].intValue) *2 + [theTargetStr substringWithRange:NSMakeRange(7,1)].intValue *1 + [theTargetStr substringWithRange:NSMakeRange(8,1)].intValue *6 + [theTargetStr substringWithRange:NSMakeRange(9,1)].intValue *3;
+                int Y = S %11;
+                NSString *M =@"F";
+                NSString *JYM =@"10X98765432";
+                M = [JYM substringWithRange:NSMakeRange(Y,1)];// 判断校验位
+                if ([M isEqualToString:[theTargetStr substringWithRange:NSMakeRange(17,1)]]) {
+                    return YES;// 检测ID的校验位
+                }else {
+                    return NO;
+                }
+            }else {
+                return NO;
+            }
+        default:
+            return NO;
+    }
+}
+
+
+/**
+ *  正则匹配:验证码匹配
+ */
++ (BOOL)isMathIdentityNumberTargetStr:(NSString *)theTargetStr {
+    NSString *regex = @"^\\d+$";
+    return [self isMathTargetStr:theTargetStr withPredicateStr:regex];
+}
+
+/**
+ *  格式化字符串，打头一个\t空间，可重载drawRectText......
+ */
++ (NSString *)formatWithSpaceString:(NSString *)theString {
+    return [NSString stringWithFormat:@"\t%@", theString];
+}
+
+/**
+ *  CGContent构造纯色图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)theColor withSize:(CGSize)theSize {
+    CGRect tRect = CGRectMake(0, 0, theSize.width, theSize.height);
+    UIGraphicsBeginImageContext(tRect.size);
+    CGContextRef tContnet = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(tContnet, theColor.CGColor);
+    CGContextFillRect(tContnet, tRect);
+    UIImage *tImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return tImage;
+}
+
+/**
+ *  检测图片大小是否合法
+ *  @param imageURL  图片路径
+ *  @param limitSize 图片大小
+ *  @param block     回调
+ */
++ (void)checkImageIsLegalWithImageURL:(NSURL *)imageURL limitMB:(NSInteger)limitSize success:(checkImageIsLegalSuccessBlock)successBlock failure:(checkImageIsLegalFailureBlock)failureBlock {
+    ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
+    {
+        ALAssetRepresentation *representation = [myasset defaultRepresentation];
+        
+        CGFloat fileMB = (float)[representation size] / (1024 * 1024);
+        
+        if (fileMB < limitSize) {
+            successBlock();
+        }else{
+            failureBlock();
+        }
+        
+    };
+    ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
+    [assetslibrary assetForURL:imageURL
+                   resultBlock:resultblock
+                  failureBlock:nil];
+}
+
+/**
+ *  图片后缀是否符合要求
+ */
++ (BOOL)judgeImageSuffix:(ALAssetRepresentation *)asset {
+    NSString *suffix = [[asset.UTI componentsSeparatedByString:@"."] lastObject];
+    if ([suffix isEqualToString:@"jpg"] ||
+        [suffix isEqualToString:@"png"] ||
+        [suffix isEqualToString:@"jpeg"] ||
+        [suffix isEqualToString:@"gif"] ||
+        [suffix isEqualToString:@"bmp"])
+    {
+        return YES;
+    }else{
+        return NO;
+    }
+}
+
+/**
+ *  获取设备的uuid
+ */
++(NSString*) uuid {
+    UIDevice *device = [UIDevice currentDevice];//创建设备对象
+    NSString *deviceUID = [[NSString alloc] initWithString:[[device identifierForVendor] UUIDString]];
+    //    deviceUID = [deviceUID stringByReplacingOccurrencesOfString:@"-" withString:@""];
+    return deviceUID ;
+}
+
+/**
+ *  获取当前的时间戳
+ */
++ (NSString *)getDate {
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970] * 1000;
+    NSString *timeString = [NSString stringWithFormat:@"%ld", (long)a];
+    return timeString;
+}
+
+/**
+ *   判断邮编格式
+ */
++ (BOOL) isValidZipcode:(NSString*)value {
+    const char *cvalue = [value UTF8String];
+    int len = (int)strlen(cvalue);
+    if (len != 6) {
+        return FALSE;
+    }
+    for (int i = 0; i < len; i++)
+    {
+        if (!(cvalue[i] >= '0' && cvalue[i] <= '9'))
+        {
+            return FALSE;
+        }
+    }
+    return TRUE;
+}
+
+/*
+ * 将JSON串转化为字典
+ */
++ (NSDictionary *)ZQY_dictionaryWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        //NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
+
+/*
+ * 将JSON串转化为数组
+ */
++ (NSArray *)ZQY_ArrayWithJsonString:(NSString *)jsonString {
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSArray *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                   options:NSJSONReadingMutableContainers
+                                                     error:&err];
+    if(err) {
+        //NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+    
+}
+
+/**
+ *   得到单个数字的十六进制ASCII码
+ */
++ (Byte )ZQY_HexByteFromNum:(NSInteger )num {
+    return 0x30+num;
+}
+
+@end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

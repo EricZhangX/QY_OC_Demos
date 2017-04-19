@@ -1,0 +1,46 @@
+//
+//  EMUsertool.m
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/11/27.
+//  Copyright © 2015年 zijing. All rights reserved.
+//  保存个人信息的工具类 ：主要用于环信发送消息的时候保存对方的头像 名称 这样
+//  自己发给对方一个对话的时候，自己才可以显示对方的头像
+//  头像  昵称  类型  id  环信id
+#define DOCUMENT_PATH    [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#import "EMUsertool.h"
+
+@implementation EMUsertool
+
++ (void)setUserDict:(NSDictionary *)dict  key:(NSString *)key
+{
+    if (key) {
+        NSString *fileName = [NSString stringWithFormat:@"%@.plist",key];
+        NSString *path =[DOCUMENT_PATH stringByAppendingPathComponent:fileName];
+        
+        [dict writeToFile:path atomically:YES];
+    }else{
+    
+        NSLog(@"请输入正确的key");
+    }
+}
+
++ (NSDictionary *)getUserDictWithKey:(NSString *)key
+{
+    if (key) {
+        NSString *fileName = [NSString stringWithFormat:@"%@.plist",key];
+        NSString *path =[DOCUMENT_PATH stringByAppendingPathComponent:fileName];
+      NSDictionary *dict =  [NSDictionary dictionaryWithContentsOfFile:path];
+        
+         return dict;
+    }else{
+        
+        NSLog(@"请输入正确的key");
+        return nil;
+    }
+
+   
+}
+
+
+@end
