@@ -29,16 +29,27 @@
                                     <constraint firstAttribute="height" constant="246" id="XJz-xY-wr8"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HRM-B5-A0y" customClass="QYLineChart">
+                                <rect key="frame" x="16" y="274" width="343" height="272"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="272" id="7qC-hh-e1s"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="lNp-YI-b8n" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9SB-Hx-rdn"/>
                             <constraint firstItem="lNp-YI-b8n" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="IzD-Nv-Zan"/>
+                            <constraint firstItem="HRM-B5-A0y" firstAttribute="top" secondItem="lNp-YI-b8n" secondAttribute="bottom" constant="8" id="XHB-HF-XQp"/>
+                            <constraint firstItem="HRM-B5-A0y" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="m8b-z4-aNx"/>
                             <constraint firstItem="lNp-YI-b8n" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="mRp-fv-uKx"/>
+                            <constraint firstItem="HRM-B5-A0y" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="q3f-Kw-JU4"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="barChart" destination="lNp-YI-b8n" id="jZo-qs-gkv"/>
+                        <outlet property="lineChart" destination="HRM-B5-A0y" id="6ih-XC-7qf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

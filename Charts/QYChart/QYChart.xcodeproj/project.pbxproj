@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990706A31EA84A8E00BDF88A /* QYLineChartData.m in Sources */ = {isa = PBXBuildFile; fileRef = 990706A21EA84A8D00BDF88A /* QYLineChartData.m */; };
+		990706A61EA84CDF00BDF88A /* QYColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 990706A51EA84CDF00BDF88A /* QYColor.m */; };
 		9930F81A1EA6EC5100158DF2 /* ZQYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */; };
 		9930F81F1EA72BD100158DF2 /* QYBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F81E1EA72BD100158DF2 /* QYBarChart.m */; };
 		9930F8221EA72BE100158DF2 /* QYLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 9930F8211EA72BE100158DF2 /* QYLineChart.m */; };
@@ -21,6 +23,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990706A11EA84A8D00BDF88A /* QYLineChartData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYLineChartData.h; sourceTree = "<group>"; };
+		990706A21EA84A8D00BDF88A /* QYLineChartData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYLineChartData.m; sourceTree = "<group>"; };
+		990706A41EA84CDF00BDF88A /* QYColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYColor.h; sourceTree = "<group>"; };
+		990706A51EA84CDF00BDF88A /* QYColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYColor.m; sourceTree = "<group>"; };
 		9930F8181EA6EC5100158DF2 /* ZQYLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQYLineChart.h; sourceTree = "<group>"; };
 		9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQYLineChart.m; sourceTree = "<group>"; };
 		9930F81D1EA72BD100158DF2 /* QYBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYBarChart.h; sourceTree = "<group>"; };
@@ -61,10 +67,14 @@
 				9930F8191EA6EC5100158DF2 /* ZQYLineChart.m */,
 				9930F81D1EA72BD100158DF2 /* QYBarChart.h */,
 				9930F81E1EA72BD100158DF2 /* QYBarChart.m */,
-				9930F8201EA72BE100158DF2 /* QYLineChart.h */,
-				9930F8211EA72BE100158DF2 /* QYLineChart.m */,
 				9930F8231EA72C0600158DF2 /* QYBarChartData.h */,
 				9930F8241EA72C0600158DF2 /* QYBarChartData.m */,
+				9930F8201EA72BE100158DF2 /* QYLineChart.h */,
+				9930F8211EA72BE100158DF2 /* QYLineChart.m */,
+				990706A11EA84A8D00BDF88A /* QYLineChartData.h */,
+				990706A21EA84A8D00BDF88A /* QYLineChartData.m */,
+				990706A41EA84CDF00BDF88A /* QYColor.h */,
+				990706A51EA84CDF00BDF88A /* QYColor.m */,
 				9930F8261EA72F3B00158DF2 /* QYCoordinateChart.h */,
 				9930F8271EA72F3B00158DF2 /* QYCoordinateChart.m */,
 			);
@@ -188,6 +198,8 @@
 				999182531EA07C01006CEF43 /* AppDelegate.m in Sources */,
 				9930F8281EA72F3B00158DF2 /* QYCoordinateChart.m in Sources */,
 				999182501EA07C01006CEF43 /* main.m in Sources */,
+				990706A31EA84A8E00BDF88A /* QYLineChartData.m in Sources */,
+				990706A61EA84CDF00BDF88A /* QYColor.m in Sources */,
 				9930F81A1EA6EC5100158DF2 /* ZQYLineChart.m in Sources */,
 				9930F8221EA72BE100158DF2 /* QYLineChart.m in Sources */,
 				9930F81F1EA72BD100158DF2 /* QYBarChart.m in Sources */,
