@@ -1,0 +1,123 @@
+//
+//  Utils.h
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/10/20.
+//  Copyright (c) 2015年 zijing. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface Utils : NSObject
+
+/**
+ *  16进制字符串转10进制数组
+ *
+ *  @param String 16进制字符串
+ *
+ *  @return 10进制数组
+ */
++ (NSArray *)NumberArrayFromHexString:(NSString *)String ;
+
+
+/**
+ *  10进制数组转16进制字符串
+ *
+ *  @param array 10进制数组
+ *
+ *  @return 6进制字符串
+ */
++(NSString *)HexStringFromNumberArray:(NSArray *)array;
+
+/**
+ *  将010101的字符串转成数组
+ *
+ *  @param string 01字符
+ *
+ *  @return 01数组
+ */
++(NSArray *)FMarrayFromString:(NSString *)string;
+
+/**
+ *  判断是否是空支付串
+ *
+ *  @param str 字符串
+ *
+ *  @return 结果
+ */
++ (BOOL)isEmptyString:(NSString *)str;
+
+/**
+ *  base64的字符串转换为nsadata
+ *
+ *  @param string base64的字符串
+ *
+ *  @return NSData
+ */
++ (NSData *)dataWithBase64EncodedString:(NSString *)string;
+
+/**
+ *  json字符传转换为数组
+ *
+ *  @param jsonString  json字符串
+ *
+ *  @return 数组
+ */
++ (NSArray *)jsonStrToArray:(NSString *)jsonString;
+
+/**
+ *  json字符传转换为字典
+ *
+ *  @param jsonString  json字符串
+ *
+ *  @return 字典
+ */
++(NSDictionary *)jsonStrToDictory:(NSString *)jsonString;
+/**
+ *  将NSDictionary或NSArray转化为JSON串 将字典或者数组转化为JSON串
+ *
+ *  @param theData 字典或是数组
+ *
+ *  @return json字符串
+ */
+
++ (NSString *)dictOrArrayToJson:(id)theData;
+/**
+ *  返回指定格式的 当前 日期字符串
+ *
+ *  @param format   指定格式
+ *
+ *  @return 日期字符串
+ */
++(NSString *)stringWithDateFormat:(NSString *)format;
+
+/**
+ *  根据目录创建文件夹
+ *
+ *  @param path 目录
+ *
+ *  @return 是否创建成功
+ */
++ (BOOL)createDirectory:(NSString *)path;
+
+/**
+ *  计算一个目录下文件的大小
+ *
+ *  @param path 目录
+ *
+ *  @return 文件大小(MB)
+ */
++ (float)sizeOfDirectory:(NSString *)path;
+
+/**
+ *  删除一个目录下的文件
+ *
+ *  @param path 目录
+ */
++ (void)clearCacheOfDirectory:(NSString *)path;
+
+/**
+    获取版本号
+ */
++(NSString *)getVersionString;
+@end

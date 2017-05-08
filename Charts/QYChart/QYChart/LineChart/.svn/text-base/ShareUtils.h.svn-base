@@ -1,0 +1,14 @@
+//
+//  ShareUtils.h
+//  SunrayWoman
+//
+//  Created by 小面包oo on 16/1/15.
+//  Copyright © 2016年 zijing. All rights reserved.
+//  shareSDK
+
+#import <Foundation/Foundation.h>
+
+@interface ShareUtils : NSObject
+
++(void) shareWithTitle:(NSString *)title content:(NSString *)content url:(NSString *)url;
+@end

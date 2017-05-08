@@ -1,0 +1,223 @@
+//
+//  URLTool.h
+//  Start_Project
+//
+//  Created by zhangqingyu on 15/10/7.
+//  Copyright © 2015年 张庆玉. All rights reserved.
+//  
+
+#ifndef URLTool_h
+#define URLTool_h
+
+//开发模式
+#define isProduction NO
+
+////测试
+//#define AppURL @"http://203.195.168.151:8888/sunray"
+//#define SRBaseURL @"http://112.74.203.190"
+//
+//////正式服务器
+////#define AppURL @"http://139.129.27.214:8080/BB"
+////#define SRBaseURL @"http://120.25.223.70:8060/BB"
+
+
+//判断套餐是否需要验证码
+#define CheckProduct_URL [SRBaseURL stringByAppendingString:@"/bbmanage/checkproduct"]
+//校验验证码
+#define CheckSpread_URL [SRBaseURL stringByAppendingString:@"/bbmanage/checkspread"]
+//1002-获取oss签名
+#define Getsignature_URL [SRBaseURL stringByAppendingString:@"/gravida/getsignature"]
+//获取心音文件链接
+#define Getheartsound_URL [SRBaseURL stringByAppendingString:@"/document/getheartsound"]
+//保存胎动记录
+#define SaveFetalMove_URL [SRBaseURL stringByAppendingString:@"/gravida/savefetalmove"]
+//获取胎动计数历史记录
+#define GetFetalMovehis_URL [SRBaseURL stringByAppendingString:@"/gravida/getfetalmovehis"]
+//取消诊断请求
+#define CancelDiagnosis_URL [SRBaseURL stringByAppendingString:@"/gravida/canceldiagnosis"]
+//判断是否能进行取消诊断操作
+#define CheckCancelDiagnosis_URL [SRBaseURL stringByAppendingString:@"/gravida/checkcanceldiagnosis"]
+//[1.8.5] 获取帖子分类列表
+#define Articlecategories_URL [AppURL stringByAppendingString:@"/api/gravida/article/categories.json"]
+//搜索好友
+#define Friendsearch_URL [AppURL stringByAppendingString:@"/api/gravida/friend/search.json"]
+//获取广告列表
+#define Advertise_URL [AppURL stringByAppendingString:@"/api/common/advertise.json"]
+//获取文章列表
+#define Articlelist_URL [AppURL stringByAppendingString:@"/api/gravida/article/list.json"]
+//获取文章详情
+#define Articledetail_URL [AppURL stringByAppendingString:@"/api/gravida/article/detail.json"]
+//评论文章
+#define Articlecomment_URL [AppURL stringByAppendingString:@"/api/gravida/article/comment.json"]
+//收藏帖子
+#define Articlefavourite_URL [AppURL stringByAppendingString:@"/api/gravida/article/favourite.json"]
+//取消收藏帖子
+#define Articleunfavourite_URL [AppURL stringByAppendingString:@"/api/gravida/article/unfavourite.json"]
+//点赞
+#define Articlepraise_URL [AppURL stringByAppendingString:@"/api/gravida/article/praise.json"]
+//取消点赞
+#define Articleunpraise_URL [AppURL stringByAppendingString:@"/api/gravida/article/unpraise.json"]
+//检测有没有需要评价的医生
+#define NeedComment_URL [AppURL stringByAppendingString:@"/api/gravida/personal/need_comment.json"]
+//检测版本升级
+#define Checkversion_URL [AppURL stringByAppendingString:@"/api/common/version.json"]
+//请求云医生诊断
+#define Hospitaldetail2_URL [AppURL stringByAppendingString:@"/api/gravida/hospital/detail2.json"]
+// 获取sn值
+#define Tradecombo_URL [AppURL stringByAppendingString:@"/api/gravida/trade/combo.json"]
+//获取帖子评论列表
+#define ArticleComments_URL [AppURL stringByAppendingString:@"/api/gravida/article/comments.json"]
+// 评论医生
+#define DoctorComment_URL [AppURL stringByAppendingString:@"/api/gravida/doctor/comment.json"]
+//获取用户初始状态
+#define CommonInit_URL [AppURL stringByAppendingString:@"/api/gravida/common/init.json"]
+//订单修改
+#define OrderUpdate_URL [AppURL stringByAppendingString:@"/api/gravida/order/update.json"]
+//订单提交
+#define OrderSubmit_URL [AppURL stringByAppendingString:@"/api/gravida/order/submit.json"]
+//获取订单详情
+#define OrderDetail_URL [AppURL stringByAppendingString:@"/api/gravida/order/detail.json"]
+//获取订单记录
+#define OrderLogs_URL [AppURL stringByAppendingString:@"/api/gravida/order/logs.json"]
+//确认收货
+#define OrderReceived_URL [AppURL stringByAppendingString:@"/api/gravida/order/received.json"]
+// 获取好友详情
+#define FriendDetail_URL [AppURL stringByAppendingString:@"/api/gravida/friend/detail.json"]
+// 获取医生评论列表
+#define DoctorComments_URL [AppURL stringByAppendingString:@"/api/gravida/doctor/comments.json"]
+// 添加好友
+#define FriendAdd_URL [AppURL stringByAppendingString:@"/api/gravida/friend/add.json"]
+// 添加好友
+#define FriendMy_URL [AppURL stringByAppendingString:@"/api/gravida/friend/my.json"]
+//删除好友
+#define FriendDelete_URL [AppURL stringByAppendingString:@"/api/gravida/friend/delete.json"]
+//[1.5.4]获取导诊列表
+#define RemindFlow_URL [AppURL stringByAppendingString:@"/api/gravida/remind/flow.json"]
+//[1.5.5]修改导诊项目状态接口
+#define ChangeRmindStatus_URL [AppURL stringByAppendingString:@"/api/gravida/remind/changeRemindStatus.json"]
+//[1.1.10] 需要评论的医生诊断
+#define PersonalNeed_comment_URL [AppURL stringByAppendingString:@"/api/gravida/personal/need_comment.json"]
+//[1.1.7]检测个人配置信息/是否有购买套餐
+#define PersonalConfigs_URL [AppURL stringByAppendingString:@"/api/gravida/personal/configs.json"]
+//更新个人信息
+//#define PersonalInfo_URL [AppURL stringByAppendingString:@"/api/gravida/personal/info.json"]
+//绑定个推
+#define GetuiBind_URL [AppURL stringByAppendingString:@"/api/gravida/personal/getui/bind.json"]
+//解绑个推
+#define GetuiUnbind_URL [AppURL stringByAppendingString:@"/api/gravida/personal/getui/unbind.json"]
+//上传定位
+#define PersonalPointer_URL [AppURL stringByAppendingString:@"/api/gravida/personal/pointer.json"]
+//获取孕妇健康记录
+#define RecordList_URL [AppURL stringByAppendingString:@"/api/gravida/record/list.json"]
+//获取孕妇高危症状列表
+#define HighriskGetHighriskList_URL [AppURL stringByAppendingString:@"/api/gravida/highrisk/getHighriskList.json"]
+//保存孕妇高危类型信息
+#define HighriskSaveHighrisk_URL [AppURL stringByAppendingString:@"/api/gravida/highrisk/saveHighrisk.json"]
+// [1.4.2] 添加健康记录
+#define RecordAdd_URL [AppURL stringByAppendingString:@"/api/gravida/record/add.json"]
+//删除健康记录
+#define RecordDelete_URL [AppURL stringByAppendingString:@"/api/gravida/record/delete.json"]
+//我收藏的帖子
+#define ArticleFavourites_URL [AppURL stringByAppendingString:@"/api/gravida/article/favourites.json"]
+//我的帖子
+#define ArticleMy_URL [AppURL stringByAppendingString:@"/api/gravida/article/my.json"]
+//删除帖子
+#define ArticleDelete_URL [AppURL stringByAppendingString:@"/api/gravida/article/delete.json"]
+//批量删除收藏的帖子
+#define ArticleUnfavourite_URL [AppURL stringByAppendingString:@"/api/gravida/article/unfavourite.json"]
+//搜索帖子
+#define ArticleSearch_URL [AppURL stringByAppendingString:@"/api/gravida/article/search.json"]
+//获取推送记录列表
+#define GetPushList_URL [AppURL stringByAppendingString:@"/api/gravida/article/getPushList.json"]
+//获取文章链接
+#define ViewArticle_URL [AppURL stringByAppendingString:@"/api/view/article.jhtml?id="]
+//别人评论我的
+#define PersonalComments_URL [AppURL stringByAppendingString:@"/api/gravida/personal/comments.json"]
+//获取提醒列表
+#define RemindList_URL [AppURL stringByAppendingString:@"/api/gravida/remind/list.json"]
+//添加提醒
+#define RemindAdd_URL [AppURL stringByAppendingString:@"/api/gravida/remind/add.json"]
+//热门套餐列表
+#define ProductHot_URL [AppURL stringByAppendingString:@"/api/gravida/product/hot.json"]
+//根据地区刷新套餐列表
+#define ProductFindByArea_URL [AppURL stringByAppendingString:@"/api/gravida/product/findByArea.json"]
+//根据医院刷新套餐列表
+#define ProductFindByHospital_URL [AppURL stringByAppendingString:@"/api/gravida/product/findByHospital.json"]
+//获取地区医院列表
+#define HospitalList_URL [AppURL stringByAppendingString:@"/api/gravida/hospital/list.json"]
+// [1.6.7] 终止服务套餐
+#define ProductTerminate_URL [AppURL stringByAppendingString:@"/api/gravida/product/terminate.json"]
+// [1.6.9] 终止合同前获取用户地址信息
+#define TerminateGetSenderMsg_URL [AppURL stringByAppendingString:@"/api/gravida/terminate/getSenderMsg.json"]
+// [1.6.10] 保存运单号
+#define OrderSetReceiveNO_URL [AppURL stringByAppendingString:@"/api/gravida/order/setReceiveNo.json"]
+// [1.6.11] 终止合同日志
+#define TerminateLogs_URL [AppURL stringByAppendingString:@"/api/gravida/terminate/logs.json"]
+//续约套餐
+#define OrderRenew_URL [AppURL stringByAppendingString:@"/api/gravida/order/renew.json"]
+//续约套餐列表
+#define GetRenewProductList_URL [AppURL stringByAppendingString:@"/api/gravida/product/getRenewProductList.json"]
+////获取我的服务记录
+//#define PersonalTrades_URL [AppURL stringByAppendingString:@"/api/gravida/personal/trades.json"]
+//获取下单sn -- 云诊断
+#define TradeCombo_URL [AppURL stringByAppendingString:@"/api/gravida/trade/combo.json"]
+//获取下单sn -- 专家诊断
+#define TradeInitialize_URL [AppURL stringByAppendingString:@"/api/gravida/trade/initialize.json"]
+
+//意见反馈
+#define CommonFeedback_URL [AppURL stringByAppendingString:@"/api/common/feedback.json"]
+
+// [1.3.4] 搜索医院
+#define HospitalSearch_URL [AppURL stringByAppendingString:@"/api/gravida/hospital/search.json"]
+// [1.13.1] 我的优惠码列表
+#define PromoPromoList_URL [AppURL stringByAppendingString:@"/api/gravida/promo/promoList.json"]
+// 优惠券说明webview
+#define PromoInfo_URL [AppURL stringByAppendingString:@"/api/view/promoInfo.jhtml?promoId="]
+// [1.13.2] 验证优惠券
+#define PromoValidationPromo_URL [AppURL stringByAppendingString:@"/api/gravida/promo/validationPromo.json"]
+// 使用优惠券（支付宝）
+#define PromoUsePromo_URL [AppURL stringByAppendingString:@"/api/gravida/promo/usePromo.json"]
+// 使用优惠券 （微信）
+#define PromoUseCoupons_URL [AppURL stringByAppendingString:@"/api/gravida/promo/useCoupons.json"]
+// [1.13.3] 赠送优惠券
+#define PromoGivingPromo_URL [AppURL stringByAppendingString:@"/api/gravida/promo/givingPromo.json"]
+// [待定] 申请取消订单
+#define PersonalCancelOrder_URL [AppURL stringByAppendingString:@"/api/gravida/personal/cancelOrder.json"]
+// [待定] 扫描添加优惠券
+#define PromoScanningPromo_URL [AppURL stringByAppendingString:@"/api/gravida/promo/scanningPromo.json"]
+// [待定] 验证白名单
+#define LoginWhiteName_URL [AppURL stringByAppendingString:@"/api/gravida/login/whiteName.json"]
+
+// 5.2 提醒链接
+#define RemindHtml_URL [AppURL stringByAppendingString:@"/api/view/remind.jhtml?id="]
+
+// [1.1.4] 修改个人信息
+#define PersonalUpdate_URL  [AppURL stringByAppendingString:@"/api/gravida/personal/update.json"]
+
+// [1.1.14] 保存网络配置信息
+#define PersonalSaveWIFIStr_URL  [AppURL stringByAppendingString:@"/api/gravida/personal/saveWIFIStr.json"]
+
+#endif /* URLTool_h */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

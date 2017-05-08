@@ -1,0 +1,193 @@
+//
+//  Tools.h
+//  Start_Project
+//
+//  Created by zhangqingyu on 15/10/7.
+//  Copyright © 2015年 张庆玉. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+
+#import "UIViewController+HUD.h"
+#import "ZQYNetWorking.h"
+#import "URLTool.h"
+#import "MJRefresh.h"
+#import "SRAreaPickerView.h"
+#import "QYDatePicker.h"
+#import "HeihtOrWeightPickerView.h"
+
+
+#define UserDefaults [NSUserDefaults standardUserDefaults]
+
+typedef void (^checkImageIsLegalSuccessBlock)();
+typedef void (^checkImageIsLegalFailureBlock)();
+
+@interface Tools : NSObject
+
+/**
+ *  图片自定义大小缩放
+ */
++ (UIImage *)scaleImageWithImage:(UIImage *)theOriginalImage withToSize:(CGSize)theSize;
+
+/**
+ *  图片等比缩放
+ */
++ (UIImage *)scaleImageWithImage:(UIImage *)theOriginalImage withScaleRate:(CGFloat)theRate;
+
+/*
+ *获取当前日期的 前后的N天日期（N=负数 为前N天，N=正数 为后N天）
+ *dateFormatter 为日期格式 例：yyyy-MM-dd hh:mm:ss
+ */
++ (NSString *)getNDay:(NSInteger)n DateFormatter:(NSString *)dateFormatter;
+
+/**
+ * 日期格式化(date)
+ **/
++ (NSString *)formatDateToNSString:(NSString *)formateStyle fromDate:(NSDate *)date;
+
+
+/**
+ *  日期格式化(string)
+ */
++ (NSString *)formatDateToNSString:(NSString *)formateStyle fromString:(NSString *)string;
+
+
+/**
+ *  一天的间隔时间
+ */
++ (NSString *)formatOtherDateWithCurrentDate:(NSDate *)theDate;
+
+/**
+ *  一天的间隔时间-- 加、减一天
+ */
++ (NSString *)formatOtherDateWithCurrentDate:(NSDate *)theDate withIsPlus:(BOOL)isPlus;
+
+/**
+ * 获取相隔的时间(TargetDay) count为相隔天数(正负值) Length字符长度
+ 例子:
+ count为前后天数   如:2为后天 -1为昨天
+ range为截取长度   如:2016-05-17 length为10
+ */
++ (NSString *)formatTargetDayWithCurrentDate:(NSDate *)theDate withCount:(int)count andRange:(NSRange)range;
+
+/**
+ *  获取date的各种属性 年月日时分秒 星期几等信息
+ */
++ (NSDateComponents *)getDateComponents:(NSDate *)date;
+
+/**
+ *  获取星期几
+ */
++ (NSString *)getWeekDay:(NSDate *)date;
+
+/**
+ *  根据日期转换成农历
+ *
+ *  @param theDate 需要转换的日期
+ *
+ *  @return 转换后的日期
+ */
++ (NSString *)formatDateToTraditionalDate:(NSDate *)theDate;
+
+/**
+ *  根据日期转换成公历
+ *
+ *  @param theDate 需要转换的日期
+ *
+ *  @return 转换后的日期
+ */
++ (NSString *)formatDateToGregorianDate:(NSDate *)theDate;
+
+/**
+ *  正则匹配
+ */
++ (BOOL)isMathTargetStr:(NSString *)theTargetStr withPredicateStr:(NSString *)theRegexStr;
+
+/**
+ *  正则匹配:电话匹配
+ */
++ (BOOL)isMathPhoneNumberTargetStr:(NSString *)theTargetStr;
+
+/**
+ *  正则匹配:验证码匹配
+ */
++ (BOOL)isMathIdentityNumberTargetStr:(NSString *)theTargetStr;
+
+/**
+ *  是否是数字或是小数点
+ *
+ *  @param string 数字
+ *
+ *  @return 匹配结果  yes 符合  no 不符合
+ */
++ (BOOL)isNumberOrPoint:(NSString *)theTargetStr;
+
+/**
+ *  验证身份证是否正确
+ *
+ *  @param value 身份证号码
+ *
+ *  @return  yes 有效   no 无效
+ */
++(BOOL)validateIDCardNumber:(NSString *)theTargetStr;
+
+/**
+ *  格式化字符串，打头一个\t空间，可重载drawRectText......
+ */
++ (NSString *)formatWithSpaceString:(NSString *)theString;
+
+/**
+ *  CGContent构造纯色图片
+ */
++ (UIImage *)imageWithColor:(UIColor *)theColor withSize:(CGSize)theSize;
+
+
+/**
+ *  检测图片大小是否合法
+ *
+ *  @param imageURL  图片路径
+ *  @param limitSize 图片大小
+ *  @param block     回调
+ */
++ (void)checkImageIsLegalWithImageURL:(NSURL *)imageURL limitMB:(NSInteger)limitSize success:(checkImageIsLegalSuccessBlock)successBlock failure:(checkImageIsLegalFailureBlock)failureBlock;
+
+/**
+ *  图片后缀是否符合要求
+ */
++ (BOOL)judgeImageSuffix:(ALAssetRepresentation *)asset;
+
+/**
+ *  获取设备的uuid
+ */
++(NSString*) uuid;
+
+/**
+ *  获取当前的时间戳
+ */
++(NSString *)getDate;
+
+/**
+ *   判断邮编格式
+ */
++ (BOOL) isValidZipcode:(NSString*)value;
+
+/*!
+ * @brief 把格式化的JSON格式的字符串转换成字典
+ * @param jsonString JSON格式的字符串
+ * @return 返回字典
+ */
++ (NSDictionary *)ZQY_dictionaryWithJsonString:(NSString *)jsonString;
+
+/**
+ *   将JSON串转化为字典或者数组
+ */
++ (NSArray *)ZQY_ArrayWithJsonString:(NSString *)jsonString;
+
+/**
+ *   得到单个数字的十六进制ASCII码
+ */
++ (Byte )ZQY_HexByteFromNum:(NSInteger )num;
+
+@end

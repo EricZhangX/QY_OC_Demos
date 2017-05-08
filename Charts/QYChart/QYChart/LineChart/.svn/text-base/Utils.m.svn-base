@@ -1,0 +1,360 @@
+//
+//  Utils.m
+//  SunrayWoman
+//
+//  Created by 小面包oo on 15/10/20.
+//  Copyright (c) 2015年 zijing. All rights reserved.
+//
+
+#import "Utils.h"
+#import "AppDelegate.h"
+
+@implementation Utils
+static const char encodingTable[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+
+/**
+ *  16进制字符串转10进制数组
+ *
+ *  @param String 16进制字符串
+ *
+ *  @return 10进制数组
+ */
++ (NSArray *)NumberArrayFromHexString:(NSString *)String {
+    NSMutableArray *mutaleArray = [NSMutableArray new];
+    if (!String) {
+        return mutaleArray;
+    }
+    NSString * str = [String uppercaseString];
+    NSMutableString *mutableStr = [NSMutableString stringWithString:str];
+    for (NSInteger i=0; (i+2)<=mutableStr.length ; i+=2) {
+        NSRange range = NSMakeRange(i, 2);
+        NSString *subStr = [mutableStr substringWithRange:range];
+        int sum = 0;
+        for (int i = 0; i < subStr.length; i++) {
+            sum *= 16;
+            char C = [subStr characterAtIndex:i] ;
+            if (C >= 'A') {
+                sum += C - 'A' + 10;
+            }else{
+                sum += C - '0';
+            }
+        }
+        [mutaleArray addObject:[NSNumber numberWithInteger:sum]];
+    }
+    return mutaleArray;
+}
+/**
+ *  10进制数组转16进制字符串
+ *
+ *  @param array 10进制数组
+ *
+ *  @return 16进制字符串
+ */+(NSString *)HexStringFromNumberArray:(NSArray *)array
+{
+    NSMutableString *hexArray = [NSMutableString string];
+    for (int i = 0 ; i < array.count; i++) {
+        int num = [array[i] intValue];
+        NSString *hexString = [[NSString alloc] initWithFormat:@"%1x",num];
+        
+        if (hexString.length == 1) {
+            hexString = [NSString stringWithFormat:@"0%@",hexString];
+        }
+        
+        [hexArray appendString:[hexString uppercaseString]];
+    }
+    
+    return hexArray;
+}
+
+/**
+ *  将010101的字符串转成数组
+ *
+ *  @param string 01字符
+ *
+ *  @return 01数组 shit
+ */
++(NSArray *)FMarrayFromString:(NSString *)string;
+{
+    NSMutableArray *array = [NSMutableArray array];
+    
+    if (string.length > 0) {
+        for (int i = 0 ; i < string.length; i++) {
+            
+            NSString *str = [string substringWithRange:NSMakeRange(i, 1)];
+            [array addObject:str];
+        }
+    }
+        return array;
+}
+/**
+ *  判断是否是空支付串
+ *
+ *  @param str 字符串
+ *
+ *  @return 结果
+ */
++ (BOOL)isEmptyString:(NSString *)str
+{
+    return !(str.length < 1);
+}
+/**
+ *  json字符传转换为数组
+ *
+ *  @param jsonString  json字符串
+ *
+ *  @return 数组
+ */
++ (NSArray *)jsonStrToArray:(NSString *)jsonString
+{
+ //NSASCIIStringEncoding
+    
+    if (jsonString.length >0) {
+        NSData *jsonData =  [jsonString dataUsingEncoding:NSASCIIStringEncoding];
+        
+        NSError *error = nil;
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingAllowFragments
+                                                          error:&error];
+        
+        if (jsonObject != nil && error == nil){
+            return jsonObject;
+        }else{
+            // 解析错误
+//            NSLog(@"解析错误");
+            return nil;
+        }
+
+    }else{
+        //NSLog(@"传入的是空串无法解析");
+        return nil;
+    }
+    
+}
+/**
+ *  json字符传转换为字典
+ *
+ *  @param jsonString  json字符串
+ *
+ *  @return 字典
+ */
++(NSDictionary *)jsonStrToDictory:(NSString *)jsonString
+{
+    if (jsonString == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                        options:NSJSONReadingMutableContainers
+                                                          error:&err];
+    if(err) {
+        //NSLog(@"json解析失败：%@",err);
+        return nil;
+    }
+    return dic;
+}
+
+/**
+ *  将NSDictionary或NSArray转化为JSON串 将字典或者数组转化为JSON串
+ *
+ *  @param theData 字典或是数组
+ *
+ *  @return json字符串
+ */
++ (NSString *)dictOrArrayToJson:(id)theData
+{
+//    一、将NSDictionary或NSArray转化为JSON串
+    // 将字典或者数组转化为JSON串
+
+        
+        NSError *error = nil;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
+                                                           options:NSJSONWritingPrettyPrinted
+                                                             error:&error];
+        
+        if ([jsonData length] > 0 && error == nil){
+            
+            NSString *jsonString = [[NSString alloc] initWithData:jsonData
+                                                         encoding:NSUTF8StringEncoding];
+            return jsonString;
+        }else{
+            
+            //NSLog(@"字典或数组转json失败");
+            return nil;
+        }
+}
+
+
+/**
+ *  base64的字符串转换为nsadata
+ *
+ *  @param string base64的字符串
+ *
+ *  @return NSData
+ */
++ (NSData *)dataWithBase64EncodedString:(NSString *)string
+{
+    if (string == nil)
+        [NSException raise:NSInvalidArgumentException format:nil];
+    if ([string length] == 0)
+        return [NSData data];
+    
+    static char *decodingTable = NULL;
+    if (decodingTable == NULL)
+    {
+        decodingTable = malloc(256);
+        if (decodingTable == NULL)
+            return nil;
+        memset(decodingTable, CHAR_MAX, 256);
+        NSUInteger i;
+        for (i = 0; i < 64; i++)
+            decodingTable[(short)encodingTable[i]] = i;
+    }
+    
+    const char *characters = [string cStringUsingEncoding:NSASCIIStringEncoding];
+    if (characters == NULL)     //  Not an ASCII string!
+        return nil;
+    char *bytes = malloc((([string length] + 3) / 4) * 3);
+    if (bytes == NULL)
+        return nil;
+    NSUInteger length = 0;
+    
+    NSUInteger i = 0;
+    while (YES)
+    {
+        char buffer[4];
+        short bufferLength;
+        for (bufferLength = 0; bufferLength < 4; i++)
+        {
+            if (characters[i] == '\0')
+                break;
+            if (isspace(characters[i]) || characters[i] == '=')
+                continue;
+            buffer[bufferLength] = decodingTable[(short)characters[i]];
+            if (buffer[bufferLength++] == CHAR_MAX)      //  Illegal character!
+            {
+                free(bytes);
+                return nil;
+            }
+        }
+        
+        if (bufferLength == 0)
+            break;
+        if (bufferLength == 1)      //  At least two characters are needed to produce one byte!
+        {
+            free(bytes);
+            return nil;
+        }
+        
+        //  Decode the characters in the buffer to bytes.
+        bytes[length++] = (buffer[0] << 2) | (buffer[1] >> 4);
+        if (bufferLength > 2)
+            bytes[length++] = (buffer[1] << 4) | (buffer[2] >> 2);
+        if (bufferLength > 3)
+            bytes[length++] = (buffer[2] << 6) | buffer[3];
+    }
+    
+    bytes = realloc(bytes, length);
+    return [NSData dataWithBytesNoCopy:bytes length:length];
+}
+/**
+ *  返回指定格式的 当前 日期字符串
+ *
+ *  @param format   指定格式
+ *
+ *  @return 日期字符串
+ */
++(NSString *)stringWithDateFormat:(NSString *)format
+{
+    NSDate *now = [NSDate date];
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    fmt.dateFormat = format;
+    return  [fmt stringFromDate:now];
+}
+
+/**
+ *  根据目录创建文件夹
+ *
+ *  @param path 目录
+ *
+ *  @return 是否创建成功
+ */
++ (BOOL)createDirectory:(NSString *)path;
+{
+    NSFileManager *msg = [NSFileManager defaultManager];
+    
+    if (![msg fileExistsAtPath:path]) {
+        
+        BOOL bb =  [msg createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+        if (bb) {
+            //NSLog(@"创建成功");
+            return YES;
+        }
+    }else {
+        //NSLog(@"路径已经存在");
+        return YES;
+    }
+    return NO;
+}
+/**
+ *  计算一个目录下文件的大小
+ *
+ *  @param path 目录
+ *
+ *  @return 文件大小
+ */
+
++ (float)sizeOfDirectory:(NSString *)path
+{
+    long long  size = 0;
+    NSFileManager *msg = [NSFileManager defaultManager];
+
+    NSArray * array =  [msg subpathsAtPath:path];
+    
+    for (NSString *str in array) {
+        
+        NSString *subPath = [path stringByAppendingPathComponent:str];
+        
+        NSDictionary * dict =   [msg attributesOfItemAtPath:subPath error:nil];
+        //NSLog(@"subPath:%@--size:%.2llum",subPath,[dict fileSize]);
+        size +=  [dict fileSize];
+    }
+    
+    //NSLog(@"%@ = %.2fm",path,size/1024.00/1024.00);
+    
+    return size/1024.00/1024.00;//[NSString stringWithFormat:@"%.2fm",size/1024.00/1024.00];
+
+}
+/**
+ *  删除一个目录下的文件
+ *
+ *  @param path 目录
+ */
++ (void)clearCacheOfDirectory:(NSString *)path
+{
+    NSFileManager *msg = [NSFileManager defaultManager];
+    NSArray * array =  [msg subpathsAtPath:path];
+    NSError *error ;
+    for (NSString *str in array) {
+        
+        NSString *subPath = [path stringByAppendingPathComponent:str];
+        [msg removeItemAtPath:subPath error:&error];
+    }
+    
+    if (!error) {
+        LogVerbose(@"删除沙盒缓存成功");
+    }else{
+        LogError(@"删除沙盒缓存失败");
+
+    }
+
+}
+
++ (NSString *)getVersionString
+{
+    NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+    
+    return [infoDictionary objectForKey:@"CFBundleShortVersionString"];
+}
+@end
