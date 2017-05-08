@@ -13,6 +13,7 @@
 		9944E8321EC06B3C004971A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9944E8301EC06B3C004971A0 /* Main.storyboard */; };
 		9944E8341EC06B3C004971A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9944E8331EC06B3C004971A0 /* Assets.xcassets */; };
 		9944E8371EC06B3C004971A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9944E8351EC06B3C004971A0 /* LaunchScreen.storyboard */; };
+		9944E8441EC06E44004971A0 /* DateUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9944E8431EC06E44004971A0 /* DateUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		9944E8331EC06B3C004971A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9944E8361EC06B3C004971A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9944E8381EC06B3C004971A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9944E8421EC06E44004971A0 /* DateUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtil.h; sourceTree = "<group>"; };
+		9944E8431EC06E44004971A0 /* DateUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 		9944E8261EC06B3C004971A0 /* QYTools */ = {
 			isa = PBXGroup;
 			children = (
+				9944E83E1EC06BBF004971A0 /* QYDevelopUtil */,
 				9944E82A1EC06B3C004971A0 /* AppDelegate.h */,
 				9944E82B1EC06B3C004971A0 /* AppDelegate.m */,
 				9944E82D1EC06B3C004971A0 /* ViewController.h */,
@@ -77,6 +81,15 @@
 				9944E8281EC06B3C004971A0 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9944E83E1EC06BBF004971A0 /* QYDevelopUtil */ = {
+			isa = PBXGroup;
+			children = (
+				9944E8421EC06E44004971A0 /* DateUtil.h */,
+				9944E8431EC06E44004971A0 /* DateUtil.m */,
+			);
+			path = QYDevelopUtil;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9944E82F1EC06B3C004971A0 /* ViewController.m in Sources */,
+				9944E8441EC06E44004971A0 /* DateUtil.m in Sources */,
 				9944E82C1EC06B3C004971A0 /* AppDelegate.m in Sources */,
 				9944E8291EC06B3C004971A0 /* main.m in Sources */,
 			);
