@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		997BCC721EE0EDEB0018086E /* StarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 997BCC6F1EE0EDEB0018086E /* StarView.xib */; };
+		997BCC731EE0EDEB0018086E /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 997BCC701EE0EDEB0018086E /* StarView.m */; };
 		99D90CA11E5A7C6D00DD7DF2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D90CA01E5A7C6D00DD7DF2 /* main.m */; };
 		99D90CA41E5A7C6D00DD7DF2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D90CA31E5A7C6D00DD7DF2 /* AppDelegate.m */; };
 		99D90CA71E5A7C6D00DD7DF2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99D90CA61E5A7C6D00DD7DF2 /* ViewController.m */; };
@@ -17,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		997BCC6F1EE0EDEB0018086E /* StarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StarView.xib; sourceTree = "<group>"; };
+		997BCC701EE0EDEB0018086E /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
+		997BCC711EE0EDEB0018086E /* StarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarView.h; sourceTree = "<group>"; };
 		99D90C9C1E5A7C6D00DD7DF2 /* CustomerPickerView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomerPickerView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99D90CA01E5A7C6D00DD7DF2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		99D90CA21E5A7C6D00DD7DF2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -61,6 +66,9 @@
 		99D90C9E1E5A7C6D00DD7DF2 /* CustomerPickerView */ = {
 			isa = PBXGroup;
 			children = (
+				997BCC6F1EE0EDEB0018086E /* StarView.xib */,
+				997BCC701EE0EDEB0018086E /* StarView.m */,
+				997BCC711EE0EDEB0018086E /* StarView.h */,
 				99D90CB61E5A7C9700DD7DF2 /* CustomPickerView */,
 				99D90CA21E5A7C6D00DD7DF2 /* AppDelegate.h */,
 				99D90CA31E5A7C6D00DD7DF2 /* AppDelegate.m */,
@@ -153,6 +161,7 @@
 			files = (
 				99D90CAF1E5A7C6D00DD7DF2 /* LaunchScreen.storyboard in Resources */,
 				99D90CAC1E5A7C6D00DD7DF2 /* Assets.xcassets in Resources */,
+				997BCC721EE0EDEB0018086E /* StarView.xib in Resources */,
 				99D90CAA1E5A7C6D00DD7DF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -167,6 +176,7 @@
 				99D90CBC1E5A7E2500DD7DF2 /* QYPickerView.m in Sources */,
 				99D90CA71E5A7C6D00DD7DF2 /* ViewController.m in Sources */,
 				99D90CA41E5A7C6D00DD7DF2 /* AppDelegate.m in Sources */,
+				997BCC731EE0EDEB0018086E /* StarView.m in Sources */,
 				99D90CA11E5A7C6D00DD7DF2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -324,6 +334,7 @@
 				99D90CB51E5A7C6D00DD7DF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
