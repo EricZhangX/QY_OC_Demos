@@ -7,27 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		990C72AC1F0B88260085CBBF /* QYCollectionVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72AB1F0B88260085CBBF /* QYCollectionVC.m */; };
+		990C72B01F0B8A900085CBBF /* QYCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72AE1F0B8A900085CBBF /* QYCollectionViewCell.m */; };
+		990C72B11F0B8A900085CBBF /* QYCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 990C72AF1F0B8A900085CBBF /* QYCollectionViewCell.xib */; };
+		990C72B41F0B90BB0085CBBF /* QYFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72B31F0B90BB0085CBBF /* QYFlowLayout.m */; };
+		990C72B71F0B95340085CBBF /* QYLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72B61F0B95340085CBBF /* QYLayout.m */; };
+		990C72BD1F0B9BB80085CBBF /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72BA1F0B9BB80085CBBF /* UIImage+ColorImage.m */; };
+		990C72BE1F0B9BB80085CBBF /* UIView+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72BC1F0B9BB80085CBBF /* UIView+Util.m */; };
+		990C72C21F0BA0F00085CBBF /* QYCollectionTableVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 990C72C11F0BA0F00085CBBF /* QYCollectionTableVC.m */; };
 		999FD0F21F01E8B600F8437A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD0F11F01E8B600F8437A /* main.m */; };
 		999FD0F51F01E8B600F8437A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD0F41F01E8B600F8437A /* AppDelegate.m */; };
-		999FD0F81F01E8B600F8437A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD0F71F01E8B600F8437A /* ViewController.m */; };
 		999FD0FB1F01E8B600F8437A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999FD0F91F01E8B600F8437A /* Main.storyboard */; };
 		999FD0FE1F01E8B600F8437A /* QYDemos.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 999FD0FC1F01E8B600F8437A /* QYDemos.xcdatamodeld */; };
 		999FD1001F01E8B600F8437A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 999FD0FF1F01E8B600F8437A /* Assets.xcassets */; };
 		999FD1031F01E8B600F8437A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999FD1011F01E8B600F8437A /* LaunchScreen.storyboard */; };
+		999FD10F1F01E98000F8437A /* DemoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD10E1F01E98000F8437A /* DemoListVC.m */; };
+		999FD15A1F01EEBD00F8437A /* TabbarDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD1591F01EEBD00F8437A /* TabbarDemoVC.m */; };
+		999FD1601F01F23700F8437A /* QYNativeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		990C72AA1F0B88260085CBBF /* QYCollectionVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCollectionVC.h; sourceTree = "<group>"; };
+		990C72AB1F0B88260085CBBF /* QYCollectionVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYCollectionVC.m; sourceTree = "<group>"; };
+		990C72AD1F0B8A900085CBBF /* QYCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCollectionViewCell.h; sourceTree = "<group>"; };
+		990C72AE1F0B8A900085CBBF /* QYCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYCollectionViewCell.m; sourceTree = "<group>"; };
+		990C72AF1F0B8A900085CBBF /* QYCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QYCollectionViewCell.xib; sourceTree = "<group>"; };
+		990C72B21F0B90BB0085CBBF /* QYFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYFlowLayout.h; sourceTree = "<group>"; };
+		990C72B31F0B90BB0085CBBF /* QYFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYFlowLayout.m; sourceTree = "<group>"; };
+		990C72B51F0B95340085CBBF /* QYLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYLayout.h; sourceTree = "<group>"; };
+		990C72B61F0B95340085CBBF /* QYLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYLayout.m; sourceTree = "<group>"; };
+		990C72B91F0B9BB80085CBBF /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
+		990C72BA1F0B9BB80085CBBF /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
+		990C72BB1F0B9BB80085CBBF /* UIView+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Util.h"; sourceTree = "<group>"; };
+		990C72BC1F0B9BB80085CBBF /* UIView+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Util.m"; sourceTree = "<group>"; };
+		990C72BF1F0B9BD40085CBBF /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		990C72C01F0BA0F00085CBBF /* QYCollectionTableVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYCollectionTableVC.h; sourceTree = "<group>"; };
+		990C72C11F0BA0F00085CBBF /* QYCollectionTableVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYCollectionTableVC.m; sourceTree = "<group>"; };
 		999FD0ED1F01E8B600F8437A /* QYDemos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QYDemos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		999FD0F11F01E8B600F8437A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		999FD0F31F01E8B600F8437A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		999FD0F41F01E8B600F8437A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		999FD0F61F01E8B600F8437A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		999FD0F71F01E8B600F8437A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		999FD0FA1F01E8B600F8437A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		999FD0FD1F01E8B600F8437A /* QYDemos.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QYDemos.xcdatamodel; sourceTree = "<group>"; };
 		999FD0FF1F01E8B600F8437A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		999FD1021F01E8B600F8437A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		999FD1041F01E8B600F8437A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		999FD10D1F01E98000F8437A /* DemoListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoListVC.h; sourceTree = "<group>"; };
+		999FD10E1F01E98000F8437A /* DemoListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoListVC.m; sourceTree = "<group>"; };
+		999FD1581F01EEBD00F8437A /* TabbarDemoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabbarDemoVC.h; sourceTree = "<group>"; };
+		999FD1591F01EEBD00F8437A /* TabbarDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarDemoVC.m; sourceTree = "<group>"; };
+		999FD15E1F01F23700F8437A /* QYNativeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNativeTabBarController.h; sourceTree = "<group>"; };
+		999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNativeTabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +71,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		990C72A11F0B79470085CBBF /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				990C72B21F0B90BB0085CBBF /* QYFlowLayout.h */,
+				990C72B31F0B90BB0085CBBF /* QYFlowLayout.m */,
+				990C72B51F0B95340085CBBF /* QYLayout.h */,
+				990C72B61F0B95340085CBBF /* QYLayout.m */,
+				990C72AA1F0B88260085CBBF /* QYCollectionVC.h */,
+				990C72AB1F0B88260085CBBF /* QYCollectionVC.m */,
+				990C72AD1F0B8A900085CBBF /* QYCollectionViewCell.h */,
+				990C72AE1F0B8A900085CBBF /* QYCollectionViewCell.m */,
+				990C72AF1F0B8A900085CBBF /* QYCollectionViewCell.xib */,
+				990C72C01F0BA0F00085CBBF /* QYCollectionTableVC.h */,
+				990C72C11F0BA0F00085CBBF /* QYCollectionTableVC.m */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		990C72B81F0B9BB80085CBBF /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				990C72B91F0B9BB80085CBBF /* UIImage+ColorImage.h */,
+				990C72BA1F0B9BB80085CBBF /* UIImage+ColorImage.m */,
+				990C72BB1F0B9BB80085CBBF /* UIView+Util.h */,
+				990C72BC1F0B9BB80085CBBF /* UIView+Util.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		999FD0E41F01E8B600F8437A = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +119,15 @@
 		999FD0EF1F01E8B600F8437A /* QYDemos */ = {
 			isa = PBXGroup;
 			children = (
+				990C72B81F0B9BB80085CBBF /* Category */,
+				990C72A11F0B79470085CBBF /* CollectionView */,
+				999FD1571F01EEA000F8437A /* TabbarDemo */,
 				999FD0F31F01E8B600F8437A /* AppDelegate.h */,
 				999FD0F41F01E8B600F8437A /* AppDelegate.m */,
-				999FD0F61F01E8B600F8437A /* ViewController.h */,
-				999FD0F71F01E8B600F8437A /* ViewController.m */,
+				999FD10D1F01E98000F8437A /* DemoListVC.h */,
+				999FD10E1F01E98000F8437A /* DemoListVC.m */,
 				999FD0F91F01E8B600F8437A /* Main.storyboard */,
+				990C72BF1F0B9BD40085CBBF /* PrefixHeader.pch */,
 				999FD0FF1F01E8B600F8437A /* Assets.xcassets */,
 				999FD1011F01E8B600F8437A /* LaunchScreen.storyboard */,
 				999FD1041F01E8B600F8437A /* Info.plist */,
@@ -80,6 +143,17 @@
 				999FD0F11F01E8B600F8437A /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		999FD1571F01EEA000F8437A /* TabbarDemo */ = {
+			isa = PBXGroup;
+			children = (
+				999FD1581F01EEBD00F8437A /* TabbarDemoVC.h */,
+				999FD1591F01EEBD00F8437A /* TabbarDemoVC.m */,
+				999FD15E1F01F23700F8437A /* QYNativeTabBarController.h */,
+				999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */,
+			);
+			path = TabbarDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,6 +217,7 @@
 			files = (
 				999FD1031F01E8B600F8437A /* LaunchScreen.storyboard in Resources */,
 				999FD1001F01E8B600F8437A /* Assets.xcassets in Resources */,
+				990C72B11F0B8A900085CBBF /* QYCollectionViewCell.xib in Resources */,
 				999FD0FB1F01E8B600F8437A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,10 +229,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				999FD0F81F01E8B600F8437A /* ViewController.m in Sources */,
 				999FD0F51F01E8B600F8437A /* AppDelegate.m in Sources */,
+				990C72B71F0B95340085CBBF /* QYLayout.m in Sources */,
+				990C72BD1F0B9BB80085CBBF /* UIImage+ColorImage.m in Sources */,
+				990C72C21F0BA0F00085CBBF /* QYCollectionTableVC.m in Sources */,
+				990C72B01F0B8A900085CBBF /* QYCollectionViewCell.m in Sources */,
+				990C72B41F0B90BB0085CBBF /* QYFlowLayout.m in Sources */,
+				999FD10F1F01E98000F8437A /* DemoListVC.m in Sources */,
+				990C72BE1F0B9BB80085CBBF /* UIView+Util.m in Sources */,
+				999FD1601F01F23700F8437A /* QYNativeTabBarController.m in Sources */,
+				999FD15A1F01EEBD00F8437A /* TabbarDemoVC.m in Sources */,
 				999FD0FE1F01E8B600F8437A /* QYDemos.xcdatamodeld in Sources */,
 				999FD0F21F01E8B600F8437A /* main.m in Sources */,
+				990C72AC1F0B88260085CBBF /* QYCollectionVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +298,8 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/zhangQyu/MyGithub/QY_OC_Demos/QYDemos/QYDemos/PrefixHeader.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -260,6 +346,8 @@
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = /Users/zhangQyu/MyGithub/QY_OC_Demos/QYDemos/QYDemos/PrefixHeader.pch;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -316,6 +404,7 @@
 				999FD1091F01E8B600F8437A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
