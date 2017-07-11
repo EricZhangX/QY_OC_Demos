@@ -27,6 +27,7 @@
     NSArray *array = [super layoutAttributesForElementsInRect:rect];
     
     for (NSInteger i = 0; i < array.count; i ++) {
+        
         UICollectionViewLayoutAttributes *attributes = [array objectAtIndex:i];
         
         NSInteger j = i / 3;

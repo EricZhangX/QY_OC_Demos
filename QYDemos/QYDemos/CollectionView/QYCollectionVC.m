@@ -48,16 +48,6 @@ static NSString * const reuseIdentifier = @"Cell";
     // Do any additional setup after loading the view.
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    self.navigationController.navigationBar.hidden = YES;
-//}
-//
-//- (void)viewDidDisappear:(BOOL)animated {
-//    [super viewDidDisappear:animated];
-//    self.navigationController.navigationBar.hidden = NO;
-//}
-
 - (void)createCartModels {
     NSArray *titles = @[@"血压",@"体重",@"运动",@"心率"];
     NSArray *titlImgs = @[@"all",@"bussiness-man",@"Category",@"favorite"];

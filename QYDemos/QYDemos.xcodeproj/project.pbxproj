@@ -24,6 +24,10 @@
 		999FD10F1F01E98000F8437A /* DemoListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD10E1F01E98000F8437A /* DemoListVC.m */; };
 		999FD15A1F01EEBD00F8437A /* TabbarDemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD1591F01EEBD00F8437A /* TabbarDemoVC.m */; };
 		999FD1601F01F23700F8437A /* QYNativeTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */; };
+		99CABC8B1F14A7A1002DFB7E /* QYAnimateIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CABC8A1F14A7A1002DFB7E /* QYAnimateIndicatorView.m */; };
+		99CABC8E1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CABC8D1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.m */; };
+		99CABC911F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.m in Sources */ = {isa = PBXBuildFile; fileRef = 99CABC901F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.m */; };
+		99F533221F0F152E00F22559 /* DemoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 99F533211F0F152E00F22559 /* DemoVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +62,15 @@
 		999FD1591F01EEBD00F8437A /* TabbarDemoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabbarDemoVC.m; sourceTree = "<group>"; };
 		999FD15E1F01F23700F8437A /* QYNativeTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYNativeTabBarController.h; sourceTree = "<group>"; };
 		999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYNativeTabBarController.m; sourceTree = "<group>"; };
+		99CABC881F14A764002DFB7E /* QYAnimateIndicatorProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYAnimateIndicatorProtocol.h; sourceTree = "<group>"; };
+		99CABC891F14A7A1002DFB7E /* QYAnimateIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYAnimateIndicatorView.h; sourceTree = "<group>"; };
+		99CABC8A1F14A7A1002DFB7E /* QYAnimateIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYAnimateIndicatorView.m; sourceTree = "<group>"; };
+		99CABC8C1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYAnimateLineScalePulseOut.h; sourceTree = "<group>"; };
+		99CABC8D1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYAnimateLineScalePulseOut.m; sourceTree = "<group>"; };
+		99CABC8F1F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QYAnimateLineScalePulseOutRapid.h; sourceTree = "<group>"; };
+		99CABC901F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QYAnimateLineScalePulseOutRapid.m; sourceTree = "<group>"; };
+		99F533201F0F152E00F22559 /* DemoVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DemoVC.h; sourceTree = "<group>"; };
+		99F533211F0F152E00F22559 /* DemoVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +132,7 @@
 		999FD0EF1F01E8B600F8437A /* QYDemos */ = {
 			isa = PBXGroup;
 			children = (
+				99CABC861F14A6EA002DFB7E /* QYAnimateIndicatorView */,
 				990C72B81F0B9BB80085CBBF /* Category */,
 				990C72A11F0B79470085CBBF /* CollectionView */,
 				999FD1571F01EEA000F8437A /* TabbarDemo */,
@@ -126,6 +140,8 @@
 				999FD0F41F01E8B600F8437A /* AppDelegate.m */,
 				999FD10D1F01E98000F8437A /* DemoListVC.h */,
 				999FD10E1F01E98000F8437A /* DemoListVC.m */,
+				99F533201F0F152E00F22559 /* DemoVC.h */,
+				99F533211F0F152E00F22559 /* DemoVC.m */,
 				999FD0F91F01E8B600F8437A /* Main.storyboard */,
 				990C72BF1F0B9BD40085CBBF /* PrefixHeader.pch */,
 				999FD0FF1F01E8B600F8437A /* Assets.xcassets */,
@@ -154,6 +170,28 @@
 				999FD15F1F01F23700F8437A /* QYNativeTabBarController.m */,
 			);
 			path = TabbarDemo;
+			sourceTree = "<group>";
+		};
+		99CABC861F14A6EA002DFB7E /* QYAnimateIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				99CABC871F14A71A002DFB7E /* Animations */,
+				99CABC881F14A764002DFB7E /* QYAnimateIndicatorProtocol.h */,
+				99CABC891F14A7A1002DFB7E /* QYAnimateIndicatorView.h */,
+				99CABC8A1F14A7A1002DFB7E /* QYAnimateIndicatorView.m */,
+			);
+			path = QYAnimateIndicatorView;
+			sourceTree = "<group>";
+		};
+		99CABC871F14A71A002DFB7E /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				99CABC8C1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.h */,
+				99CABC8D1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.m */,
+				99CABC8F1F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.h */,
+				99CABC901F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.m */,
+			);
+			path = Animations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,8 +268,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				999FD0F51F01E8B600F8437A /* AppDelegate.m in Sources */,
+				99CABC8E1F14A9BB002DFB7E /* QYAnimateLineScalePulseOut.m in Sources */,
+				99CABC8B1F14A7A1002DFB7E /* QYAnimateIndicatorView.m in Sources */,
 				990C72B71F0B95340085CBBF /* QYLayout.m in Sources */,
 				990C72BD1F0B9BB80085CBBF /* UIImage+ColorImage.m in Sources */,
+				99CABC911F14B012002DFB7E /* QYAnimateLineScalePulseOutRapid.m in Sources */,
 				990C72C21F0BA0F00085CBBF /* QYCollectionTableVC.m in Sources */,
 				990C72B01F0B8A900085CBBF /* QYCollectionViewCell.m in Sources */,
 				990C72B41F0B90BB0085CBBF /* QYFlowLayout.m in Sources */,
@@ -240,6 +281,7 @@
 				999FD1601F01F23700F8437A /* QYNativeTabBarController.m in Sources */,
 				999FD15A1F01EEBD00F8437A /* TabbarDemoVC.m in Sources */,
 				999FD0FE1F01E8B600F8437A /* QYDemos.xcdatamodeld in Sources */,
+				99F533221F0F152E00F22559 /* DemoVC.m in Sources */,
 				999FD0F21F01E8B600F8437A /* main.m in Sources */,
 				990C72AC1F0B88260085CBBF /* QYCollectionVC.m in Sources */,
 			);
